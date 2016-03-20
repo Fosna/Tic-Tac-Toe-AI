@@ -1,3 +1,5 @@
+'use strict'
+
 /*
  * object to contain all items accessable to all control functions
  */
@@ -11,12 +13,11 @@ var globals = {};
 $(".level").each(function() {
     var $this = $(this);
     $this.click(function() {
-        $('.selected').toggleClass('not-selected');
-        $('.selected').toggleClass('selected');
-        $this.toggleClass('not-selected');
-        $this.toggleClass('selected');
+        $('.level').not($this).removeClass('selected').addClass('not-selected');
+        $this.removeClass('not-selected').addClass('selected');
 
         ai.level = $this.attr("id");
+        console.log(ai.level);
     });
 });
 
@@ -26,9 +27,8 @@ $(".level").each(function() {
  * and UI view to swicthed to indicate that it's human's trun to play
  */
 $(".start").click(function() {
-    var selectedDiffeculty = $('.selected').attr("id");
-    if(typeof selectedDiffeculty !== "undefined") {
-        var aiPlayer = new AI(selectedDiffeculty);
+    if(ai.level) {
+        var aiPlayer = new AI(ai.level);
         globals.game = new Game(aiPlayer);
 
         aiPlayer.plays(globals.game);
