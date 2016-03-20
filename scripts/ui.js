@@ -1,3 +1,5 @@
+import $ from 'jquery'
+
 /*
  * ui object encloses all UI related methods and attributes
  */
@@ -83,3 +85,5 @@ ui.insertAt = function(indx, symbol) {
         targetCell.addClass('occupied');
     }
 }
+
+export default ui;

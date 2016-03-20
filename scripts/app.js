@@ -1,2 +1,1 @@
-let x = 5;
-console.log(x);
+import * as control from "./control.js";

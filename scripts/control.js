@@ -1,4 +1,12 @@
-'use strict'
+import AI from './ai.js';
+import Game from './game.js'
+import State from './state.js'
+import ui from './ui.js'
+import $ from 'jquery'
+
+console.log(ai);
+console.log(ai.AI);
+console.log(AI);
 
 /*
  * object to contain all items accessable to all control functions
@@ -15,9 +23,6 @@ $(".level").each(function() {
     $this.click(function() {
         $('.level').not($this).removeClass('selected').addClass('not-selected');
         $this.removeClass('not-selected').addClass('selected');
-
-        ai.level = $this.attr("id");
-        console.log(ai.level);
     });
 });
 
@@ -27,8 +32,9 @@ $(".level").each(function() {
  * and UI view to swicthed to indicate that it's human's trun to play
  */
 $(".start").click(function() {
-    if(ai.level) {
-        var aiPlayer = new AI(ai.level);
+    var aiLevel = $('.selected').attr('id');
+    if(aiLevel) {
+        var aiPlayer = new AI(aiLevel);
         globals.game = new Game(aiPlayer);
 
         aiPlayer.plays(globals.game);
