@@ -1,0 +1,34 @@
+{
+  "name": "tic-tac-toe-ai",
+  "version": "1.0.0",
+  "description": "Tic-Tac-Toe game with AI. Uses ES2015.",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fosna/Tic-Tac-Toe-AI.git"
+  },
+  "keywords": [
+    "tic-tac-toe",
+    "es6",
+    "es2015"
+  ],
+  "author": "Fosna",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Fosna/Tic-Tac-Toe-AI/issues"
+  },
+  "homepage": "https://github.com/Fosna/Tic-Tac-Toe-AI#readme",
+  "devDependencies": {
+    "babel-core": "^6.2.1",
+    "babel-loader": "^6.2.0",
+    "babel-preset-es2015": "^6.1.18",
+    "webpack": "^1.12.9"
+  }
+}
