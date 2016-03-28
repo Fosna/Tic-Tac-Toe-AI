@@ -1,7 +1,7 @@
 /*
  * Represents a state in the game
  * @param old [State]: old state to intialize the new state
- */
+ */  
 var State = function(old) {
 
     /*
