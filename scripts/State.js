@@ -1,48 +1,54 @@
-/*
- * Represents a state in the game
- * @param old [State]: old state to intialize the new state
- */  
-var State = function(old) {
-
+class State {
     /*
-     * public : the player who has the turn to player
+     * Represents a state in the game
+     * @param old [State]: old state to intialize the new state
      */
-    this.turn = "";
+    constructor(old) {
+        // TODO: Sho object destructuring.
+        // TODO: Extract default initialization to some method.
 
-    /*
-     * public : the number of moves of the AI player
-     */
-    this.oMovesCount = 0;
+        /*
+         * public : the player who has the turn to player
+         */
+        this.turn = "";
 
-    /*
-     * public : the result of the game in this State
-     */
-    this.result = "still running";
+        /*
+         * public : the number of moves of the AI player
+         */
+        this.oMovesCount = 0;
 
-    /*
-     * public : the board configuration in this state
-     */
-    this.board = [];
+        /*
+         * public : the result of the game in this State
+         */
+        this.result = "still running";
 
-    /* Begin Object Construction */
-    if(typeof old !== "undefined") {
-        // if the state is constructed using a copy of another state
-        var len = old.board.length;
-        this.board = new Array(len);
-        for(var itr = 0 ; itr < len ; itr++) {
-            this.board[itr] = old.board[itr];
+        /*
+         * public : the board configuration in this state
+         */
+        this.board = [];
+
+        // TODO: Extract to copy old board.
+        /* Begin Object Construction */
+        if(typeof old !== "undefined") {
+            // if the state is constructed using a copy of another state
+            var len = old.board.length;
+            this.board = new Array(len);
+            for(var itr = 0 ; itr < len ; itr++) {
+                this.board[itr] = old.board[itr];
+            }
+
+            this.oMovesCount = old.oMovesCount;
+            this.result = old.result;
+            this.turn = old.turn;
         }
-
-        this.oMovesCount = old.oMovesCount;
-        this.result = old.result;
-        this.turn = old.turn;
+        /* End Object Construction */
     }
-    /* End Object Construction */
+    
 
     /*
      * public : advances the turn in a the state
      */
-    this.advanceTurn = function() {
+    advanceTurn() {
         this.turn = this.turn === "X" ? "O" : "X";
     }
 
@@ -50,7 +56,7 @@ var State = function(old) {
      * public function that enumerates the empty cells in state
      * @return [Array]: indices of all empty cells
      */
-    this.emptyCells = function() {
+    emptyCells() {
         var indxs = [];
         for(var itr = 0; itr < 9 ; itr++) {
             if(this.board[itr] === "E") {
@@ -66,7 +72,7 @@ var State = function(old) {
      * @returns [Boolean]: true if it's terminal, false otherwise
      */
 
-    this.isTerminal = function() {
+    isTerminal() {
         var B = this.board;
 
         //check rows

@@ -1,4 +1,4 @@
-import State from './State';
+import State from './state';
 
 /*
  * Constructs an action that the ai player could make
