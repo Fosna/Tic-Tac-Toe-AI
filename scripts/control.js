@@ -4,17 +4,19 @@ import State from './state.js'
 import ui from './ui.js'
 import $ from 'jquery'
 
-let globals = {
-    game: null
-};
-
 class control {
     constructor() {
+        // Stash reference should never change. 
+        // If it changes cell click setup will break during game play.
+        this.stash = {
+            game: null
+        };
+
         this.setupChooseDificulty();
         this.setupStart();
         this.setupCellClick();
     }
-    
+
     /*
      * choosing difficulty level (onclick span.level) behavior and control
      * when a level is clicked, it becomes highlighted and the "ai.level" variable
@@ -40,11 +42,11 @@ class control {
             var aiLevel = $('.selected').attr('id');
             if(aiLevel) {
                 var aiPlayer = new AI(aiLevel);
-                globals.game = new Game(aiPlayer);
+                this.stash.game = new Game(aiPlayer);
 
-                aiPlayer.plays(globals.game);
+                aiPlayer.plays(this.stash.game);
 
-                globals.game.start();
+                this.stash.game.start();
             }
         });
     }
@@ -56,19 +58,21 @@ class control {
      * advance the game to the new created state
      */
     setupCellClick() {
+        let _stash = this.stash;
+
         $(".cell").click(function() {
             let $this = $(this);
-            if(globals.game && globals.game.status === "running" && globals.game.currentState.turn === "X" && !$this.hasClass('occupied')) {
+            if(_stash.game && _stash.game.status === "running" && _stash.game.currentState.turn === "X" && !$this.hasClass('occupied')) {
                 var indx = parseInt($this.data("indx"));
 
-                var next = new State(globals.game.currentState);
+                var next = new State(_stash.game.currentState);
                 next.board[indx] = "X";
 
                 ui.insertAt(indx, "X");
 
                 next.advanceTurn();
 
-                globals.game.advanceTo(next);
+                _stash.game.advanceTo(next);
 
             }
         });
