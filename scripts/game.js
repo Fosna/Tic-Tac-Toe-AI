@@ -1,4 +1,3 @@
-import ui from './ui.js';
 import State from './state.js';
 
 
@@ -7,10 +6,13 @@ class Game {
      * Constructs a game object to be played
      * @param autoPlayer [AIPlayer] : the AI player to be play the game with
      */
-    constructor(autoPlayer) {
+    constructor(autoPlayer, ui) {
 
         //public : initialize the ai player for this game
         this.ai = autoPlayer;
+
+        // public : ui dependency injection
+        this.ui = ui;
 
         // public : initialize the game current state to empty board configuration
         this.currentState = new State();
@@ -39,24 +41,24 @@ class Game {
 
             if(state.result === "X-won")
                 //X won
-                ui.switchViewTo("won");
+                this.ui.switchViewTo("won");
             else if(state.result === "O-won")
                 //X lost
-                ui.switchViewTo("lost");
+                this.ui.switchViewTo("lost");
             else
                 //it's a draw
-                ui.switchViewTo("draw");
+                this.ui.switchViewTo("draw");
         }
         else {
             //the game is still running
 
             if(this.currentState.turn === "X") {
-                ui.switchViewTo("human");
+                this.ui.switchViewTo("human");
 
-                ui.humanMove(indx => this.makeAMove(indx));
+                this.ui.humanMove(indx => this.makeAMove(indx));
             }
             else {
-                ui.switchViewTo("robot");
+                this.ui.switchViewTo("robot");
 
                 //notify the AI player its turn has come up
                 this.ai.notify(this.turn, indx => this.makeAMove(indx));
@@ -67,7 +69,7 @@ class Game {
     makeAMove(indx) {
         var next = new State(this.currentState);
         next.board[indx] = next.turn;
-        ui.insertAt(indx, next.turn);
+        this.ui.insertAt(indx, next.turn);
         next.advanceTurn();
         this.advanceTo(next);
     };

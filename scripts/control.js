@@ -1,5 +1,6 @@
 import AI from './ai.js';
 import Game from './game.js'
+import Ui from './Ui.js';
 import $ from 'jquery'
 
 class control {
@@ -31,7 +32,8 @@ class control {
             const aiLevel = $('.selected').attr('id');
             if(aiLevel) {
                 const aiPlayer = new AI(aiLevel);
-                const game = new Game(aiPlayer);
+                const uiInstance = new Ui();
+                const game = new Game(aiPlayer, uiInstance);
 
                 aiPlayer.plays(game);
 
