@@ -1,1 +1,3 @@
-import * as control from "./control.js";
+import control from "./control.js";
+
+new control();
