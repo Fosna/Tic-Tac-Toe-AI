@@ -1,6 +1,5 @@
 import AiAction from './aiAction.js';
 import Game from './game.js'
-import ui from './ui.js'
 
 
 class AI {
@@ -78,11 +77,7 @@ class AI {
         var randomCell = available[Math.floor(Math.random() * available.length)];
         var action = new AiAction(randomCell);
 
-        var next = action.applyTo(this.game.currentState);
-
-        ui.insertAt(randomCell, turn);
-
-        this.game.advanceTo(next);
+        return action.movePosition;
     }
 
     /*
@@ -128,11 +123,8 @@ class AI {
                 chosenAction = availableActions[0];
             }
         }
-        var next = chosenAction.applyTo(this.game.currentState);
 
-        ui.insertAt(chosenAction.movePosition, turn);
-
-        this.game.advanceTo(next);
+        return chosenAction.movePosition;
     };
 
     /*
@@ -164,11 +156,7 @@ class AI {
 
         //take the first action as it's the optimal
         var chosenAction = availableActions[0];
-        var next = chosenAction.applyTo(this.game.currentState);
-
-        ui.insertAt(chosenAction.movePosition, turn);
-
-        this.game.advanceTo(next);
+        return chosenAction.movePosition;
     }
 
 
@@ -184,13 +172,22 @@ class AI {
      * public function: notify the ai player that it's its turn
      * @param turn [String]: the player to play, either X or O
      */
-    notify(turn) {
+    notify(turn, callback) {
+        let indx = null;
         switch(this.levelOfIntelligence) {
             //invoke the desired behavior based on the level chosen
-            case "blind": this.takeABlindMove(turn); break;
-            case "novice": this.takeANoviceMove(turn); break;
-            case "master": this.takeAMasterMove(turn); break;
+            case "blind": 
+                indx = this.takeABlindMove(turn); 
+                break;
+            case "novice": 
+                indx = this.takeANoviceMove(turn); 
+                break;
+            case "master": 
+                indx = this.takeAMasterMove(turn); 
+                break;
         }
+
+        callback(indx);
     };
 };
 

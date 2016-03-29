@@ -52,21 +52,31 @@ class Game {
 
             if(this.currentState.turn === "X") {
                 ui.switchViewTo("human");
+
+                ui.humanMove(indx => this.makeAMove(indx));
             }
             else {
                 ui.switchViewTo("robot");
 
                 //notify the AI player its turn has come up
-                this.ai.notify("O");
+                this.ai.notify(this.turn, indx => this.makeAMove(indx));
             }
         }
     }
+
+    makeAMove(indx) {
+        var next = new State(this.currentState);
+        next.board[indx] = next.turn;
+        ui.insertAt(indx, next.turn);
+        next.advanceTurn();
+        this.advanceTo(next);
+    };
 
     /*
      * starts the game
      */
     start() {
-        if(this.status = "beginning") {
+        if(this.status === "beginning") {
             //invoke advanceTo with the initial state
             this.advanceTo(this.currentState);
             this.status = "running";

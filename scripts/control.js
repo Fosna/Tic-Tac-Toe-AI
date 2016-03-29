@@ -1,20 +1,11 @@
 import AI from './ai.js';
 import Game from './game.js'
-import State from './state.js'
-import ui from './ui.js'
 import $ from 'jquery'
 
 class control {
     constructor() {
-        // Stash reference should never change. 
-        // If it changes cell click setup will break during game play.
-        this.stash = {
-            game: null
-        };
-
         this.setupChooseDificulty();
         this.setupStart();
-        this.setupCellClick();
     }
 
     /*
@@ -24,7 +15,7 @@ class control {
      */
     setupChooseDificulty() {
         $(".level").click(function() {
-            var $this = $(this);
+            const $this = $(this);
             $('.level').not($this).removeClass('selected').addClass('not-selected');
             $this.removeClass('not-selected').addClass('selected');
         });
@@ -37,41 +28,14 @@ class control {
      */
     setupStart() {
         $(".start").click(x => {
-            var aiLevel = $('.selected').attr('id');
+            const aiLevel = $('.selected').attr('id');
             if(aiLevel) {
-                var aiPlayer = new AI(aiLevel);
-                this.stash.game = new Game(aiPlayer);
+                const aiPlayer = new AI(aiLevel);
+                const game = new Game(aiPlayer);
 
-                aiPlayer.plays(this.stash.game);
+                aiPlayer.plays(game);
 
-                this.stash.game.start();
-            }
-        });
-    }
-
-    /*
-     * click on cell (onclick div.cell) behavior and control
-     * if an empty cell is clicked when the game is running and its the human player's trun
-     * get the indecies of the clickd cell, craete the next game state, upadet the UI, and
-     * advance the game to the new created state
-     */
-    setupCellClick() {
-        let _stash = this.stash;
-
-        $(".cell").click(function() {
-            let $this = $(this);
-            if(_stash.game && _stash.game.status === "running" && _stash.game.currentState.turn === "X" && !$this.hasClass('occupied')) {
-                var indx = parseInt($this.data("indx"));
-
-                var next = new State(_stash.game.currentState);
-                next.board[indx] = "X";
-
-                ui.insertAt(indx, "X");
-
-                next.advanceTurn();
-
-                _stash.game.advanceTo(next);
-
+                game.start();
             }
         });
     }

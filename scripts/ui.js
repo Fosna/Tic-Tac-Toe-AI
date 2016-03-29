@@ -86,4 +86,15 @@ ui.insertAt = function(indx, symbol) {
     }
 }
 
+ui.humanMove = function(callback) {
+    let $unoccupied = $(".cell").not(".occupied");
+
+    $unoccupied.click(function () {
+        var $this = $(this);
+        var indx = parseInt($this.data("indx"));
+        $unoccupied.off("click");
+        callback(indx);
+    });
+}
+
 export default ui;
