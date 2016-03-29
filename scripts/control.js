@@ -23,12 +23,10 @@ class control {
      * is set to the chosen level
      */
     setupChooseDificulty() {
-        $(".level").each(function() {
+        $(".level").click(function() {
             var $this = $(this);
-            $this.click(function() {
-                $('.level').not($this).removeClass('selected').addClass('not-selected');
-                $this.removeClass('not-selected').addClass('selected');
-            });
+            $('.level').not($this).removeClass('selected').addClass('not-selected');
+            $this.removeClass('not-selected').addClass('selected');
         });
     }
 
