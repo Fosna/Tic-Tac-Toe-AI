@@ -1,5 +1,5 @@
-import AiAction from './aiAction.js';
-import Game from './game.js'
+import AiAction from "./aiAction.js";
+import Game from "./game.js"
 
 
 class AI {

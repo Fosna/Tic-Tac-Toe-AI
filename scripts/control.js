@@ -1,7 +1,7 @@
-import AI from './ai.js';
-import Game from './game.js'
-import Ui from './Ui.js';
-import $ from 'jquery'
+import AI from "./ai.js";
+import Game from "./game.js"
+import Ui from "./Ui.js";
+import $ from "jquery"
 
 class control {
     constructor() {
@@ -17,8 +17,8 @@ class control {
     setupChooseDificulty() {
         $(".level").click(function() {
             const $this = $(this);
-            $('.level').not($this).removeClass('selected').addClass('not-selected');
-            $this.removeClass('not-selected').addClass('selected');
+            $(".level").not($this).removeClass("selected").addClass("not-selected");
+            $this.removeClass("not-selected").addClass("selected");
         });
     }
 
@@ -29,7 +29,7 @@ class control {
      */
     setupStart() {
         $(".start").click(x => {
-            const aiLevel = $('.selected').attr('id');
+            const aiLevel = $(".selected").attr("id");
             if(aiLevel) {
                 const aiPlayer = new AI(aiLevel);
                 const uiInstance = new Ui();

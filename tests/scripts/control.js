@@ -35,8 +35,8 @@ $(".dropdown-menu .items h1").each(function(){
         $(".dropdown-menu .selection").css("opacity", 1);
 
         //set the configs object based on the attributes read from the selected item
-        configs.xlevel = $this.data('xlevel');
-        configs.olevel = $this.data('olevel');
+        configs.xlevel = $this.data("xlevel");
+        configs.olevel = $this.data("olevel");
 
         $(".dropdown-menu .items").slideToggle();
     });
@@ -48,9 +48,9 @@ $(".start").click(function(){
 
         //create parallel workers to play the 1000 games
         var games = [
-            new Worker('./scripts/third.of.games.js'),
-            new Worker('./scripts/third.of.games.js'),
-            new Worker('./scripts/third.of.games.js')
+            new Worker("./scripts/third.of.games.js"),
+            new Worker("./scripts/third.of.games.js"),
+            new Worker("./scripts/third.of.games.js")
         ];
 
         var counter = 1;

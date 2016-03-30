@@ -1,4 +1,4 @@
-import $ from 'jquery'
+import $ from "jquery"
 
 /*
  * Ui object encloses all UI related methods and attributes
@@ -30,7 +30,7 @@ class Ui {
             //if the game is just starting
             this.intialControlsVisible = false;
 
-            $('.intial').fadeOut({
+            $(".intial").fadeOut({
                 duration : "slow",
                 done : x => this.showCurrentView(turn) 
             });
@@ -51,15 +51,15 @@ class Ui {
      * @param symbol [String]: X or O
      */
     insertAt(indx, symbol) {
-        var board = $('.cell');
+        var board = $(".cell");
         var targetCell = $(board[indx]);
 
-        if(!targetCell.hasClass('occupied')) {
+        if(!targetCell.hasClass("occupied")) {
             targetCell.html(symbol);
             targetCell.css({
                 color : symbol == "X" ? "green" : "red"
             });
-            targetCell.addClass('occupied');
+            targetCell.addClass("occupied");
         }
     }
 
