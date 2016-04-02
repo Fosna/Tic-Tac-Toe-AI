@@ -95,6 +95,11 @@ class Game {
         }
     }
 
+    /*
+    * public static function that calculates the score of the x player in a given terminal state
+    * @param state [State]: the state in which the score is calculated
+    * @return [Number]: the score calculated for the human player
+    */
     static score(state: State) {
         if(state.result === "X-won"){
             // the x player won
@@ -110,25 +115,5 @@ class Game {
         }    
     }
 };
-
-/*
- * public static function that calculates the score of the x player in a given terminal state
- * @param state [State]: the state in which the score is calculated
- * @return [Number]: the score calculated for the human player
- */
-// Game.score = function(state) {
-//     if(state.result === "X-won"){
-//         // the x player won
-//         return 10 - state.oMovesCount;
-//     }
-//     else if(state.result === "O-won") {
-//         //the x player lost
-//         return - 10 + state.oMovesCount;
-//     }
-//     else {
-//         //it's a draw
-//         return 0;
-//     }
-// }
 
 export default Game;
