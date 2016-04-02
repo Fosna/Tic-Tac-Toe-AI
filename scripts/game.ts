@@ -68,9 +68,6 @@ class Game {
                 this.ui.switchViewTo("robot");
 
                 //notify the AI player its turn has come up
-                
-                // TODO: Double check
-                
                 this.ai.notify(this.currentState.turn, indx => this.makeAMove(indx));
             }
         }

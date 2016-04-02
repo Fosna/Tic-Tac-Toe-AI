@@ -89,7 +89,7 @@ class AI {
      * that is: mix between choosing the optimal and suboptimal minimax decisions
      * @param turn [String]: the player to play, either X or O
      */
-    takeANoviceMove(turn) {
+    takeANoviceMove(turn: string) {
         var available = this.game.currentState.emptyCells();
 
         //enumerate and calculate the score for each available actions to the ai player
@@ -136,7 +136,7 @@ class AI {
      * that is: choose the optimal minimax decision
      * @param turn [String]: the player to play, either X or O
      */
-    takeAMasterMove(turn) {
+    takeAMasterMove(turn: string) {
         var available = this.game.currentState.emptyCells();
 
         //enumerate and calculate the score for each avaialable actions to the ai player
@@ -168,7 +168,7 @@ class AI {
      * public method to specify the game the ai player will play
      * @param game [Game] : the game the ai will play
      */
-    plays(game){
+    plays(game: Game){
         this.game = game;
     };
 
@@ -176,7 +176,7 @@ class AI {
      * public function: notify the ai player that it's its turn
      * @param turn [String]: the player to play, either X or O
      */
-    notify(turn, callback) {
+    notify(turn: string, callback: (number) => any) {
         let indx = null;
         switch(this.levelOfIntelligence) {
             //invoke the desired behavior based on the level chosen
