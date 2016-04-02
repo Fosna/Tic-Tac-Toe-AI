@@ -1,17 +1,7 @@
 module.exports = {
 	entry: ["./scripts/app.js"],
 	output: {
-		filename: "./scripts/bundle.js"
-	},
-
-	module: {
-		loaders: [
-			{
-				test: /\.js$/,
-				exclude: /node_modules/,
-				loader: "babel-loader"
-			}
-		]
+		filename: "./build/bundle.js"
 	},
 
 	resolve: {

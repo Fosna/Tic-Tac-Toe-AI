@@ -1,2 +1,12 @@
-node_modules
-bundle*
+out.txt
+
+#npm installed dependencies
+node_modules/
+
+#TypeScript definition files
+typings/
+
+#TypeScript compiler output
+scripts/*.js
+scripts/*.js.map
+build/
