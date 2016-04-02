@@ -8,5 +8,5 @@ typings/
 
 #TypeScript compiler output
 scripts/*.js
-scripts/*.js.map
+scripts/*.map
 build/
