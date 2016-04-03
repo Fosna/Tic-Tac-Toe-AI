@@ -1,8 +1,9 @@
 import * as angular from "angular";
+import BoxFactory from "./factory/boxFactory";
 
 export interface IMainScope extends angular.IScope {
     intialControlsVisible: boolean;
-    difficulty: string;
+    difficultyBox: BoxFactory;
     
     isHuman: boolean;
     isWon: boolean;
@@ -13,11 +14,10 @@ export interface IMainScope extends angular.IScope {
     startGame();
 }
 
-export interface IDifficultyScope extends IMainScope {
+export interface IDifficultyVm {
     isBlind: boolean;
     isNovice: boolean;
     isMaster: boolean;
     
     setDifficulty(difficultyLevel: string);
-    getDifficultyClass(difficultyLevel: string);
 }

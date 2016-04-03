@@ -3,18 +3,19 @@ import * as  interfaces from "../interfaces";
 import AI from "../ai";
 import Game from "../game";
 import Ui from "../ui";
+import BoxFactory from "../factory/boxFactory";
 
 const mainController = function (app: angular.IModule) {
     app.controller("MainController", ["$scope", function ($scope: interfaces.IMainScope) {
-        $scope.difficulty = "";
+        $scope.difficultyBox = BoxFactory.instance;
         $scope.intialControlsVisible = true;
         $scope.isHuman = false;
         
         $scope.startGame = function () {
             var myScope = <interfaces.IMainScope>this;
             
-            if (myScope.difficulty) {
-                const aiPlayer = new AI(myScope.difficulty);
+            if (myScope.difficultyBox.getValue()) {
+                const aiPlayer = new AI(myScope.difficultyBox.getValue());
                 const uiInstance = new Ui(myScope);
                 const game = new Game(aiPlayer, uiInstance);
 

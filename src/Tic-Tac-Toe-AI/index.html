@@ -8,6 +8,8 @@
     <body ng-app="App">
         
         <div class = 'main-container' ng-controller='MainController'>
+            
+            <h1>{{ difficultyBox.value }}</h1>
             <div class = 'board'>
                 <!-- data-indx following cell divs represents cell index in 1D array representation -->
                 <div class='cell' data-indx = "0" ></div>
@@ -26,21 +28,22 @@
                 
                 <div class='intial' ng-show="intialControlsVisible">
                     <!--<div class = 'difficulty'>-->
-                    <div class = 'difficulty' ng-controller='DifficultyController'>
+                    <div class = 'difficulty' ng-controller='DifficultyController as difficultyCtrl'>
+                        <br />
                         <span id='blind'
                             class='level not-selected' 
-                            ng-click='setDifficulty("blind")' 
-                            ng-class='{"selected": isBlind, "not-selected": !isBlind }'>
+                            ng-click='difficultyCtrl.vm.setDifficulty("blind")' 
+                            ng-class='{"selected": difficultyCtrl.vm.isBlind, "not-selected": !difficultyCtrl.vm.isBlind }'>
                             Blind
                         </span>
                         <span class='level not-selected' id='novice' 
-                            ng-click='setDifficulty("novice")'
-                            ng-class='{"selected": isNovice, "not-selected": !isNovice }'>
+                            ng-click='difficultyCtrl.vm.setDifficulty("novice")'
+                            ng-class='{"selected": difficultyCtrl.vm.isNovice, "not-selected": !difficultyCtrl.vm.isNovice }'>
                             Novice
                         </span>
                         <span class='level not-selected' id='master' 
-                            ng-click='setDifficulty("master")'
-                            ng-class='{"selected": isMaster, "not-selected": !isMaster }'>
+                            ng-click='difficultyCtrl.vm.setDifficulty("master")'
+                            ng-class='{"selected": difficultyCtrl.vm.isMaster, "not-selected": !difficultyCtrl.vm.isMaster }'>
                             Master!
                         </span>
                     </div>
