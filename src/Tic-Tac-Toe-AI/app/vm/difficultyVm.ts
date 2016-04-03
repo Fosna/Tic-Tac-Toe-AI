@@ -12,9 +12,8 @@ class DifficultyVm implements interfaces.IDifficultyVm {
     
     constructor() {
         this.box = BoxFactory.instance;
-        
-        this.intialControlsVisible = true;
-        this.setDifficultyFlags(this.box.value);
+        this.box.setValue("");
+        this.setDifficultyFlags("");
     }
     
     setDifficulty(difficultyLevel: string) {
