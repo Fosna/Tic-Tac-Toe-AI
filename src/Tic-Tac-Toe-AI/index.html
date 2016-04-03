@@ -26,11 +26,24 @@
                 <div class = 'intial'>
                     <!--<div class = 'difficulty'>-->
                     <div class = 'difficulty' ng-controller="DifficultyController">
-                        <h1>{{msg}}</h1>
+                        <h1>{{difficulty}}</h1>
                         
-                        <span class = 'level not-selected' id = "blind">Blind</span>
-                        <span class = 'level not-selected' id = "novice">Novice</span>
-                        <span class = 'level not-selected' id = "master">Master!</span>
+                        <span id='blind'
+                            class='level not-selected' 
+                            ng-click='setDifficulty("blind")' 
+                            ng-class='{"selected": isBlind, "not-selected": !isBlind }'>
+                            Blind
+                        </span>
+                        <span class='level not-selected' id='novice' 
+                            ng-click='setDifficulty("novice")'
+                            ng-class='{"selected": isNovice, "not-selected": !isNovice }'>
+                            Novice
+                        </span>
+                        <span class='level not-selected' id='master' 
+                            ng-click='setDifficulty("master")'
+                            ng-class='{"selected": isMaster, "not-selected": !isMaster }'>
+                            Master!
+                        </span>
                     </div>
 
                     <div class='start'> Start </div>
