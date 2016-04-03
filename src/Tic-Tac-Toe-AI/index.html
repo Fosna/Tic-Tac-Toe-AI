@@ -25,9 +25,7 @@
                 <!-- div.intial displays the starting controls -->
                 <div class = 'intial'>
                     <!--<div class = 'difficulty'>-->
-                    <div class = 'difficulty' ng-controller="DifficultyController">
-                        <h1>{{difficulty}}</h1>
-                        
+                    <div class = 'difficulty' ng-controller='DifficultyController'>
                         <span id='blind'
                             class='level not-selected' 
                             ng-click='setDifficulty("blind")' 
@@ -46,7 +44,7 @@
                         </span>
                     </div>
 
-                    <div class='start'> Start </div>
+                    <div class='start' ng-click='startGame()'>Start</div>
                 </div>
 
                 <!-- div.ingame displays in-game messages and controls -->

@@ -6,10 +6,12 @@ const difficultyController = function(app: angular.IModule) {
         $scope.isBlind = false;
         
         $scope.setDifficulty = function(difficultyLevel) {
-            let myScope = <iScopeExtensions.IDifficultyScope>this;
+            const myScope = <iScopeExtensions.IDifficultyScope>this;
             
-            myScope.difficulty = difficultyLevel;
+            const mainScope = <iScopeExtensions.IMainScope>myScope.$parent;
             
+            mainScope.difficulty = difficultyLevel; 
+                        
             myScope.isBlind = difficultyLevel === "blind";
             myScope.isNovice = difficultyLevel === "novice";
             myScope.isMaster = difficultyLevel === "master";
