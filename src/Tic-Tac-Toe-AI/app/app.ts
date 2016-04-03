@@ -3,9 +3,11 @@
 // new control();
 
 import * as angular from "angular";
-import DifficultyController from "./difficulty/difficultyController";
+import DifficultyController from "./controllers/difficultyController";
+import MainController from "./controllers/mainController";
 
 // app is global angular module for this app.
 var app = angular.module("App", []);
 
+MainController(app);
 DifficultyController(app);
