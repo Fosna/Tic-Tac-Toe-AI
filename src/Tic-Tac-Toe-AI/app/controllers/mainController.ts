@@ -1,17 +1,17 @@
 import * as angular from "angular";
-import * as  iScopeExtensions from "./iScopeExtensions";
+import * as  interfaces from "../interfaces";
 import AI from "../ai";
 import Game from "../game";
 import Ui from "../ui";
 
 const mainController = function (app: angular.IModule) {
-    app.controller("MainController", ["$scope", function ($scope: iScopeExtensions.IMainScope) {
+    app.controller("MainController", ["$scope", function ($scope: interfaces.IMainScope) {
         $scope.difficulty = "";
         $scope.intialControlsVisible = true;
         $scope.isHuman = false;
         
         $scope.startGame = function () {
-            var myScope = <iScopeExtensions.IMainScope>this;
+            var myScope = <interfaces.IMainScope>this;
             
             if (myScope.difficulty) {
                 const aiPlayer = new AI(myScope.difficulty);
@@ -26,7 +26,7 @@ const mainController = function (app: angular.IModule) {
         };
         
         $scope.showCurrentView = function (turn) {
-            var myScope = <iScopeExtensions.IMainScope>this;
+            var myScope = <interfaces.IMainScope>this;
             
             console.log(turn);
             

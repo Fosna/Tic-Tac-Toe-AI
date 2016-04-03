@@ -1,5 +1,3 @@
-// rename to scopeInterfaces
-
 import * as angular from "angular";
 
 export interface IMainScope extends angular.IScope {

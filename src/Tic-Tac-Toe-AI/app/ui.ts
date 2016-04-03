@@ -1,13 +1,13 @@
-import * as iScopeExtensions from "./controllers/iScopeExtensions";
+import * as interfaces from "./interfaces";
 import * as $ from "jquery";
 
 /*
  * Ui object encloses all UI related methods and attributes
  */
 class Ui {
-    private guiScope: iScopeExtensions.IMainScope;
+    private guiScope: interfaces.IMainScope;
     
-    constructor(guiScope: iScopeExtensions.IMainScope) {
+    constructor(guiScope: interfaces.IMainScope) {
         //view model for gui
         this.guiScope = guiScope;
     }

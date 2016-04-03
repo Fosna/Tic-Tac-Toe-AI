@@ -1,14 +1,14 @@
 import * as angular from "angular";
-import * as iScopeExtensions from "./IScopeExtensions";
+import * as interfaces from "../interfaces";
 
 const difficultyController = function(app: angular.IModule) {
-    app.controller("DifficultyController", ["$scope", function($scope: iScopeExtensions.IDifficultyScope) {
+    app.controller("DifficultyController", ["$scope", function($scope: interfaces.IDifficultyScope) {
         $scope.isBlind = false;
         
         $scope.setDifficulty = function(difficultyLevel) {
-            const myScope = <iScopeExtensions.IDifficultyScope>this;
+            const myScope = <interfaces.IDifficultyScope>this;
             
-            const mainScope = <iScopeExtensions.IMainScope>myScope.$parent;
+            const mainScope = <interfaces.IMainScope>myScope.$parent;
             
             mainScope.difficulty = difficultyLevel; 
                         
