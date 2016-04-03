@@ -23,7 +23,8 @@
 
             <div class = 'control'>
                 <!-- div.intial displays the starting controls -->
-                <div class = 'intial'>
+                
+                <div class='intial' ng-show="intialControlsVisible">
                     <!--<div class = 'difficulty'>-->
                     <div class = 'difficulty' ng-controller='DifficultyController'>
                         <span id='blind'
@@ -48,14 +49,14 @@
                 </div>
 
                 <!-- div.ingame displays in-game messages and controls -->
-                <div class = 'ingame' id="human">It's your turn ...</div>
-                <div class = 'ingame' id="ai">
+                <div class = 'ingame' id="human" ng-show='isHuman'>It's your turn ...</div>
+                <div class = 'ingame' id="ai" ng-show='currentView === "ai"'>
                     <img src = "imgs/robot.png" id = "robot" class = "robot" />
-                    <p>Waint for it ...</p>
+                    <p>Wait for it ...</p>
                 </div>
-                <div class = 'ingame' id="won">You won !</div>
-                <div class = 'ingame' id="lost">You lost !</div>
-                <div class = 'ingame' id="draw">It's a Draw</div>
+                <div class = 'ingame' id="won" ng-show='isWon'>You won !</div>
+                <div class = 'ingame' id="lost" ng-show='isLost'>You lost !</div>
+                <div class = 'ingame' id="draw" ng-show='isDraw'>It's a Draw</div>
             </div>
         </div>
 

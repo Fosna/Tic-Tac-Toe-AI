@@ -1,24 +1,20 @@
-import * as $ from "jquery"
+import * as iScopeExtensions from "./controllers/iScopeExtensions";
+import * as $ from "jquery";
 
 /*
  * Ui object encloses all UI related methods and attributes
  */
 class Ui {
-    private intialControlsVisible: boolean;
-    private currentView: string;
+    private guiScope: iScopeExtensions.IMainScope;
     
-    constructor() {
-        //holds the state of the intial controls visibility
-        this.intialControlsVisible = true;
-
-        //holds the current visible view
-        this.currentView = "";
+    constructor(guiScope: iScopeExtensions.IMainScope) {
+        //view model for gui
+        this.guiScope = guiScope;
     }
 
     //helper function for async calling
     showCurrentView(turn: string) {
-        this.currentView = "#" + turn;
-        $(this.currentView).fadeIn("fast");
+        this.guiScope.showCurrentView(turn);
     }
 
     /*
@@ -26,22 +22,11 @@ class Ui {
      * @param turn [String]: the player to switch the view to
      */
     switchViewTo(turn: string) {
-        if(this.intialControlsVisible) {
+        if(this.guiScope.intialControlsVisible) {
             //if the game is just starting
-            this.intialControlsVisible = false;
-
-            $(".intial").fadeOut({
-                duration : "slow",
-                done : x => this.showCurrentView(turn) 
-            });
+            this.guiScope.intialControlsVisible = false;
         }
-        else {
-            //if the game is in an intermediate state
-            $(this.currentView).fadeOut({
-                duration: "fast",
-                done: x => this.showCurrentView(turn)
-            });
-        }
+        this.showCurrentView(turn);
     };
 
     /*

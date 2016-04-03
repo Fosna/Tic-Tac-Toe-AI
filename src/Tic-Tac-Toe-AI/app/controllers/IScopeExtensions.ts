@@ -1,7 +1,17 @@
+// rename to scopeInterfaces
+
 import * as angular from "angular";
 
 export interface IMainScope extends angular.IScope {
+    intialControlsVisible: boolean;
     difficulty: string;
+    
+    isHuman: boolean;
+    isWon: boolean;
+    isLost: boolean;
+    isDraw: boolean;
+    
+    showCurrentView(turn: string);
     startGame();
 }
 
