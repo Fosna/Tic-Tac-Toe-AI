@@ -7,8 +7,6 @@
 
     <body ng-app="App">
         
-        <h1>{{2 + 3}}</h1>
-        
         <div class = 'main-container'>
             <div class = 'board'>
                 <!-- data-indx following cell divs represents cell index in 1D array representation -->
@@ -26,7 +24,10 @@
             <div class = 'control'>
                 <!-- div.intial displays the starting controls -->
                 <div class = 'intial'>
-                    <div class = 'difficulty'>
+                    <!--<div class = 'difficulty'>-->
+                    <div class = 'difficulty' ng-controller="DifficultyController">
+                        <h1>Monkey</h1>
+                        
                         <span class = 'level not-selected' id = "blind">Blind</span>
                         <span class = 'level not-selected' id = "novice">Novice</span>
                         <span class = 'level not-selected' id = "master">Master!</span>
