@@ -1,23 +1,21 @@
 import * as interfaces from "../interfaces";
-import BoxFactory from "../factory/boxFactory";
+import DifficultyBoxFactory from "../factory/difficultyBoxFactory";
 
 class DifficultyVm implements interfaces.IDifficultyVm {
-    box: BoxFactory;
-        
-    intialControlsVisible: boolean;
+    private difficultyBox: DifficultyBoxFactory;
     
     isBlind: boolean;
     isNovice: boolean;
     isMaster: boolean;
     
     constructor() {
-        this.box = BoxFactory.instance;
-        this.box.setValue("");
+        this.difficultyBox = DifficultyBoxFactory.instance;
+        this.difficultyBox.setValue("");
         this.setDifficultyFlags("");
     }
     
     setDifficulty(difficultyLevel: string) {
-        this.box.setValue(difficultyLevel);
+        this.difficultyBox.setValue(difficultyLevel);
         this.setDifficultyFlags(difficultyLevel);
     }
     
@@ -27,5 +25,5 @@ class DifficultyVm implements interfaces.IDifficultyVm {
         this.isMaster = difficultyLevel === "master";
     }
 }
-
+ 
 export default DifficultyVm;

@@ -1,9 +1,9 @@
 import * as angular from "angular";
-import BoxFactory from "./factory/boxFactory";
+import DifficultyBoxFactory from "./factory/difficultyBoxFactory";
 
 export interface IMainScope extends angular.IScope {
     intialControlsVisible: boolean;
-    difficultyBox: BoxFactory;
+    difficultyBox: DifficultyBoxFactory;
     
     isHuman: boolean;
     isWon: boolean;
