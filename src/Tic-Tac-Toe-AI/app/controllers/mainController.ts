@@ -29,15 +29,12 @@ const mainController = function (app: angular.IModule) {
         $scope.showCurrentView = function (turn) {
             var myScope = <interfaces.IMainScope>this;
             
-            console.log(turn);
-            
             myScope.isHuman = turn === "human";
             myScope.isWon = turn === "won";
             myScope.isLost = turn === "lost";
             myScope.isDraw = turn === "draw";
             
-            console.log(myScope.isHuman);
-            
+            // TODO: Why do I need it.
             myScope.$evalAsync();
         };
     }]);

@@ -9,7 +9,7 @@ class State {
      * @param old [State]: old state to intialize the new state
      */
     constructor(old: State = null) {
-        // TODO: Sho object destructuring.
+        // TODO: Show object destructuring.
         // TODO: Extract default initialization to some method.
 
         /*
