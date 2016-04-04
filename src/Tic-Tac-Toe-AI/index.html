@@ -26,9 +26,7 @@
                 <!-- div.intial displays the starting controls -->
                 
                 <div class='intial' ng-show="intialControlsVisible">
-                    <!--<div class = 'difficulty'>-->
                     <div class = 'difficulty' ng-controller='DifficultyController as difficultyCtrl'>
-                        <br />
                         <span id='blind'
                             class='level not-selected' 
                             ng-click='difficultyCtrl.vm.setDifficulty("blind")' 

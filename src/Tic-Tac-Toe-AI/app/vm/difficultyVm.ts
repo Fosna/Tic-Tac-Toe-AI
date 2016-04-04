@@ -1,15 +1,15 @@
 import * as interfaces from "../interfaces";
-import DifficultyBoxFactory from "../factory/difficultyBoxFactory";
+import BoxFactory from "../factory/boxFactory";
 
 class DifficultyVm implements interfaces.IDifficultyVm {
-    private difficultyBox: DifficultyBoxFactory;
+    private difficultyBox: BoxFactory;
     
     isBlind: boolean;
     isNovice: boolean;
     isMaster: boolean;
     
-    constructor() {
-        this.difficultyBox = DifficultyBoxFactory.instance;
+    constructor(difficultyBox: BoxFactory) {
+        this.difficultyBox = difficultyBox;
         this.difficultyBox.setValue("");
         this.setDifficultyFlags("");
     }

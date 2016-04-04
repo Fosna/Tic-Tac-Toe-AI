@@ -3,11 +3,11 @@ import * as  interfaces from "../interfaces";
 import AI from "../ai";
 import Game from "../game";
 import Ui from "../ui";
-import DifficultyBoxFactory from "../factory/difficultyBoxFactory";
+import MainFactory from "../factory/mainFactory";
 
 const mainController = function (app: angular.IModule) {
     app.controller("MainController", ["$scope", function ($scope: interfaces.IMainScope) {
-        $scope.difficultyBox = DifficultyBoxFactory.instance;
+        $scope.difficultyBox = MainFactory.difficultyFactory;
         $scope.intialControlsVisible = true;
         $scope.isHuman = false;
         
