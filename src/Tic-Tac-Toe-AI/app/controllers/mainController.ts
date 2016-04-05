@@ -6,12 +6,12 @@ import Ui from "../ui";
 import MainFactory from "../factory/mainFactory";
 
 const mainController = function (app: angular.IModule) {
-    app.controller("MainController", ["$scope", function ($scope: interfaces.IMainScope) {
-        $scope.difficultyBox = MainFactory.difficultyFactory;
-        $scope.intialControlsVisible = true;
-        $scope.isHuman = false;
+    app.controller("MainController", ["$scope", function ($scope: angular.IScope) {
+        this.difficultyBox = MainFactory.difficultyFactory;
+        this.intialControlsVisible = true;
+        this.isHuman = false;
         
-        $scope.startGame = function () {
+        this.startGame = function () {
             var myScope = <interfaces.IMainScope>this;
             
             if (myScope.difficultyBox.getValue()) {
@@ -26,7 +26,9 @@ const mainController = function (app: angular.IModule) {
             
         };
         
-        $scope.showCurrentView = function (turn) {
+        this.showCurrentView = function (turn) {
+            console.log(turn);
+            
             var myScope = <interfaces.IMainScope>this;
             
             myScope.isHuman = turn === "human";
@@ -34,8 +36,8 @@ const mainController = function (app: angular.IModule) {
             myScope.isLost = turn === "lost";
             myScope.isDraw = turn === "draw";
             
-            // TODO: Why do I need it.
-            myScope.$evalAsync();
+            // TODO: Remove after jQuery is removed.
+            $scope.$evalAsync();
         };
     }]);
 };

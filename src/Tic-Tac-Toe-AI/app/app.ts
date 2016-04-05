@@ -9,7 +9,7 @@ MainFactory.init();
 var app = angular.module("App", []);
 
 app.controller("DifficultyController", [function() {
-     this.vm = new DifficultyVm(MainFactory.difficultyFactory);
+    this.vm = new DifficultyVm(MainFactory.difficultyFactory);
 }]);
 
 MainController(app);

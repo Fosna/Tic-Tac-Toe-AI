@@ -7,7 +7,7 @@
 
     <body ng-app="App">
         
-        <div class = 'main-container' ng-controller='MainController'>
+        <div class = 'main-container' ng-controller='MainController as mainCtrl'>
             
             <div class = 'board'>
                 <!-- data-indx following cell divs represents cell index in 1D array representation -->
@@ -25,7 +25,7 @@
             <div class = 'control'>
                 <!-- div.intial displays the starting controls -->
                 
-                <div class='intial' ng-show="intialControlsVisible">
+                <div class='intial' ng-show='mainCtrl.intialControlsVisible'>
                     <div class = 'difficulty' ng-controller='DifficultyController as difficultyCtrl'>
                         <span id='blind'
                             class='level not-selected' 
@@ -45,18 +45,18 @@
                         </span>
                     </div>
 
-                    <div class='start' ng-click='startGame()'>Start</div>
+                    <div class='start' ng-click='mainCtrl.startGame()'>Start</div>
                 </div>
 
                 <!-- div.ingame displays in-game messages and controls -->
-                <div class = 'ingame' id="human" ng-show='isHuman'>It's your turn ...</div>
+                <div class = 'ingame' id="human" ng-show='mainCtrl.isHuman'>It's your turn ...</div>
                 <div class = 'ingame' id="ai" ng-show='currentView === "ai"'>
                     <img src = "imgs/robot.png" id = "robot" class = "robot" />
                     <p>Wait for it ...</p>
                 </div>
-                <div class = 'ingame' id="won" ng-show='isWon'>You won !</div>
-                <div class = 'ingame' id="lost" ng-show='isLost'>You lost !</div>
-                <div class = 'ingame' id="draw" ng-show='isDraw'>It's a Draw</div>
+                <div class = 'ingame' id="won" ng-show='mainCtrl.isWon'>You won !</div>
+                <div class = 'ingame' id="lost" ng-show='mainCtrl.isLost'>You lost !</div>
+                <div class = 'ingame' id="draw" ng-show='mainCtrl.isDraw'>It's a Draw</div>
             </div>
         </div>
 
