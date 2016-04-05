@@ -2,15 +2,7 @@ import * as angular from "angular";
 import BoxFactory from "./factory/boxFactory";
 
 export interface IMainScope extends angular.IScope {
-    intialControlsVisible: boolean;
     difficultyBox: BoxFactory;
-    
-    isHuman: boolean;
-    isWon: boolean;
-    isLost: boolean;
-    isDraw: boolean;
-    
-    showCurrentView(turn: string);
     startGame();
 }
 
@@ -20,4 +12,16 @@ export interface IDifficultyVm {
     isMaster: boolean;
     
     setDifficulty(difficultyLevel: string);
+}
+
+export interface IGameStatusVm {
+    intialControlsVisible: boolean;
+    
+    isHuman: boolean;
+    isAi: boolean;
+    isWon: boolean;
+    isLost: boolean;
+    isDraw: boolean;   
+    
+    showCurrentView(turn: string);
 }

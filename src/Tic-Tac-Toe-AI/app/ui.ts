@@ -5,16 +5,16 @@ import * as $ from "jquery";
  * Ui object encloses all UI related methods and attributes
  */
 class Ui {
-    private guiScope: interfaces.IMainScope;
+    private gameStatusVm: interfaces.IGameStatusVm;
     
-    constructor(guiScope: interfaces.IMainScope) {
+    constructor(gameStatusVm: interfaces.IGameStatusVm) {
         //view model for gui
-        this.guiScope = guiScope;
+        this.gameStatusVm = gameStatusVm;
     }
 
     //helper function for async calling
     showCurrentView(turn: string) {
-        this.guiScope.showCurrentView(turn);
+        this.gameStatusVm.showCurrentView(turn);
     }
 
     /*
@@ -22,9 +22,9 @@ class Ui {
      * @param turn [String]: the player to switch the view to
      */
     switchViewTo(turn: string) {
-        if(this.guiScope.intialControlsVisible) {
+        if(this.gameStatusVm.intialControlsVisible) {
             //if the game is just starting
-            this.guiScope.intialControlsVisible = false;
+            this.gameStatusVm.intialControlsVisible = false;
         }
         this.showCurrentView(turn);
     };
