@@ -9,13 +9,13 @@ class Game {
     private ui: Ui;
     public currentState: State;
     private status: string;
-    private gameStatusVm: interfaces.IGameStatusVm;
+    private gameStatusVm: interfaces.IGameStatusUi;
     
     /*
      * Constructs a game object to be played
      * @param autoPlayer [AIPlayer] : the AI player to be play the game with
      */
-    constructor(autoPlayer, ui, gameStatusVm: interfaces.IGameStatusVm) {
+    constructor(autoPlayer, ui, gameStatusVm: interfaces.IGameStatusUi) {
 
         //public : initialize the ai player for this game
         this.ai = autoPlayer;

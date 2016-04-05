@@ -14,7 +14,11 @@ export interface IDifficultyVm {
     setDifficulty(difficultyLevel: string);
 }
 
-export interface IGameStatusVm {
+export interface IGameStatusUi {
+    switchViewTo(turn: string); 
+}
+
+export interface IGameStatusVm extends IGameStatusUi {
     // TODO: Remove properties. Should be private. 
     // Leave only switchViewTo.
     intialControlsVisible: boolean;
@@ -24,7 +28,4 @@ export interface IGameStatusVm {
     isWon: boolean;
     isLost: boolean;
     isDraw: boolean;   
-    
-    showCurrentView(turn: string);
-    switchViewTo(turn: string);
 }
