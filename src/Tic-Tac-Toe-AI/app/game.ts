@@ -1,3 +1,4 @@
+import * as interfaces from "./interfaces";
 import State from "./state";
 import Ai from "./ai";
 import Ui from "./ui";
@@ -8,12 +9,13 @@ class Game {
     private ui: Ui;
     public currentState: State;
     private status: string;
+    private gameStatusVm: interfaces.IGameStatusVm;
     
     /*
      * Constructs a game object to be played
      * @param autoPlayer [AIPlayer] : the AI player to be play the game with
      */
-    constructor(autoPlayer, ui) {
+    constructor(autoPlayer, ui, gameStatusVm: interfaces.IGameStatusVm) {
 
         //public : initialize the ai player for this game
         this.ai = autoPlayer;
@@ -35,6 +37,8 @@ class Game {
          * initialize game status to beginning
          */
         this.status = "beginning";
+        
+        this.gameStatusVm = gameStatusVm;
     }
 
     /*
@@ -48,24 +52,24 @@ class Game {
 
             if(state.result === "X-won")
                 //X won
-                this.ui.switchViewTo("won");
+                this.gameStatusVm.switchViewTo("won");
             else if(state.result === "O-won")
                 //X lost
-                this.ui.switchViewTo("lost");
+                this.gameStatusVm.switchViewTo("lost");
             else
                 //it's a draw
-                this.ui.switchViewTo("draw");
+                this.gameStatusVm.switchViewTo("draw");
         }
         else {
             //the game is still running
 
             if(this.currentState.turn === "X") {
-                this.ui.switchViewTo("human");
+                this.gameStatusVm.switchViewTo("human");
 
                 this.ui.humanMove(indx => this.makeAMove(indx));
             }
             else {
-                this.ui.switchViewTo("robot");
+                this.gameStatusVm.switchViewTo("robot");
 
                 //notify the AI player its turn has come up
                 this.ai.notify(this.currentState.turn, indx => this.makeAMove(indx));

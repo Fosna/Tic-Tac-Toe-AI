@@ -26,7 +26,16 @@ class GameStatusVm implements interfaces.IGameStatusVm {
                 
         // TODO: Remove after jQuery is removed.
         this.$scope.$evalAsync();
-    };   
+    };
+    
+    switchViewTo(turn: string) {
+        if(this.intialControlsVisible) {
+            //if the game is just starting
+            this.intialControlsVisible = false;
+        }
+        
+        this.showCurrentView(turn);
+    };
 }
 
 export default GameStatusVm;

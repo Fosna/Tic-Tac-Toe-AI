@@ -17,8 +17,8 @@ const mainController = function (app: angular.IModule) {
             
             if (myScope.difficultyBox.getValue()) {
                 const aiPlayer = new AI(myScope.difficultyBox.getValue());
-                const uiInstance = new Ui(this.gameStatusVm);
-                const game = new Game(aiPlayer, uiInstance);
+                const uiInstance = new Ui();
+                const game = new Game(aiPlayer, uiInstance, this.gameStatusVm);
 
                 aiPlayer.plays(game);
 

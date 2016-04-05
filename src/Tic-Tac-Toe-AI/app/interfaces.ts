@@ -15,6 +15,8 @@ export interface IDifficultyVm {
 }
 
 export interface IGameStatusVm {
+    // TODO: Remove properties. Should be private. 
+    // Leave only switchViewTo.
     intialControlsVisible: boolean;
     
     isHuman: boolean;
@@ -24,4 +26,5 @@ export interface IGameStatusVm {
     isDraw: boolean;   
     
     showCurrentView(turn: string);
+    switchViewTo(turn: string);
 }

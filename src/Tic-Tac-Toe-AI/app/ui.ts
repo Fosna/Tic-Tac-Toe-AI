@@ -5,29 +5,9 @@ import * as $ from "jquery";
  * Ui object encloses all UI related methods and attributes
  */
 class Ui {
-    private gameStatusVm: interfaces.IGameStatusVm;
-    
-    constructor(gameStatusVm: interfaces.IGameStatusVm) {
-        //view model for gui
-        this.gameStatusVm = gameStatusVm;
+    constructor() {
+        // Empty
     }
-
-    //helper function for async calling
-    showCurrentView(turn: string) {
-        this.gameStatusVm.showCurrentView(turn);
-    }
-
-    /*
-     * switchs the view on the UI depending on who's turn it switchs
-     * @param turn [String]: the player to switch the view to
-     */
-    switchViewTo(turn: string) {
-        if(this.gameStatusVm.intialControlsVisible) {
-            //if the game is just starting
-            this.gameStatusVm.intialControlsVisible = false;
-        }
-        this.showCurrentView(turn);
-    };
 
     /*
      * places X or O in the specifed place in the board
