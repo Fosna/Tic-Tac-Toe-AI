@@ -29,18 +29,18 @@
                     <div class = 'difficulty'>
                         <span id='blind'
                             class='level not-selected' 
-                            ng-click='startCtrl.vm.setDifficulty("blind")' 
-                            ng-class='{"selected": startCtrl.vm.isBlind, "not-selected": !startCtrl.vm.isBlind }'>
+                            ng-click='startCtrl.setDifficulty("blind")' 
+                            ng-class='{"selected": startCtrl.isBlind, "not-selected": !startCtrl.isBlind }'>
                             Blind
                         </span>
                         <span class='level not-selected' id='novice' 
-                            ng-click='startCtrl.vm.setDifficulty("novice")'
-                            ng-class='{"selected": startCtrl.vm.isNovice, "not-selected": !startCtrl.vm.isNovice }'>
+                            ng-click='startCtrl.setDifficulty("novice")'
+                            ng-class='{"selected": startCtrl.isNovice, "not-selected": !startCtrl.isNovice }'>
                             Novice
                         </span>
                         <span class='level not-selected' id='master' 
-                            ng-click='startCtrl.vm.setDifficulty("master")'
-                            ng-class='{"selected": startCtrl.vm.isMaster, "not-selected": !startCtrl.vm.isMaster }'>
+                            ng-click='startCtrl.setDifficulty("master")'
+                            ng-class='{"selected": startCtrl.isMaster, "not-selected": !startCtrl.isMaster }'>
                             Master!
                         </span>
                     </div>
