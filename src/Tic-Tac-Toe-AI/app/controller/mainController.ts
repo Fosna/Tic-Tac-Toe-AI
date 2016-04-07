@@ -8,7 +8,7 @@ import GameStatusVm from "../vm/gameStatusVm";
 
 const mainController = function (app: angular.IModule) {
     app.controller("MainController", ["$scope", function ($scope: angular.IScope) {
-        this.gameStatusVm = new GameStatusVm($scope);
+        // this.gameStatusVm = new GameStatusVm($scope);
         
         this.difficultyBox = MainFactory.difficultyFactory;
         

@@ -1,5 +1,6 @@
 import * as interfaces from "../interfaces";
 import * as angular from "angular";
+import {IBoxService} from "../service/boxService";
 
 class GameStatusVm implements interfaces.IGameStatusVm {
     intialControlsVisible: boolean;
@@ -10,11 +11,13 @@ class GameStatusVm implements interfaces.IGameStatusVm {
     isLost: boolean;
     isDraw: boolean;
     
-    private $scope: angular.IScope;
+    private gameStatusScopeBox : IBoxService<angular.IScope>
     
-    constructor($scope: angular.IScope) {
-        this.$scope = $scope;
+    constructor(gameStatusScopeBox : IBoxService<angular.IScope>) {
         this.intialControlsVisible = true;
+        this.gameStatusScopeBox = gameStatusScopeBox
+        
+        console.log("GameStatusVm.constructor()", gameStatusScopeBox);
     }
     
     // TODO: Rename to show game status.
@@ -25,7 +28,7 @@ class GameStatusVm implements interfaces.IGameStatusVm {
         this.isDraw = turn === "draw";
                 
         // TODO: Remove after jQuery is removed.
-        this.$scope.$evalAsync();
+        this.gameStatusScopeBox.getValue().$evalAsync();
     };
     
     switchViewTo(turn: string) {

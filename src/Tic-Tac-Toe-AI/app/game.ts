@@ -1,3 +1,5 @@
+// TODO: Move to model folder.
+
 import * as interfaces from "./interfaces";
 import State from "./state";
 import Ai from "./ai";
