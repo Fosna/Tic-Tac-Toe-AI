@@ -1,6 +1,8 @@
 import * as angular from "angular";
-import StartController from "./controllers/StartController";
+import GameService from "./service/GameService";
+import StartController from "./controller/StartController";
 
 // app is global angular module for this app.
 var app = angular.module("App", []).
-    controller("StartController", [StartController]);
+    service("GameService", [GameService]).
+    controller("StartController", ["GameService", StartController]);
