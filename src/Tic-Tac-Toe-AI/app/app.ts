@@ -1,15 +1,6 @@
 import * as angular from "angular";
-import MainController from "./controllers/mainController";
-import MainFactory from "./factory/mainFactory";
-import DifficultyVm from "./vm/difficultyVm";
-
-MainFactory.init();
+import StartController from "./controllers/StartController";
 
 // app is global angular module for this app.
-var app = angular.module("App", []);
-
-app.controller("DifficultyController", [function() {
-    this.vm = new DifficultyVm(MainFactory.difficultyFactory);
-}]);
-
-MainController(app);
+var app = angular.module("App", []).
+    controller("StartController", [StartController]);

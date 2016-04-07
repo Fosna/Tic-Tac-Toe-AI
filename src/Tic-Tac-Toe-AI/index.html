@@ -7,7 +7,7 @@
 
     <body ng-app="App">
         
-        <div class = 'main-container' ng-controller='MainController as mainCtrl'>
+        <div class = 'main-container'>
             
             <div class = 'board'>
                 <!-- data-indx following cell divs represents cell index in 1D array representation -->
@@ -25,27 +25,27 @@
             <div class = 'control'>
                 <!-- div.intial displays the starting controls -->
                 
-                <div class='intial' ng-show='mainCtrl.gameStatusVm.intialControlsVisible'>
-                    <div class = 'difficulty' ng-controller='DifficultyController as difficultyCtrl'>
+                <div class='intial' ng-controller='StartController as startCtrl'>
+                    <div class = 'difficulty'>
                         <span id='blind'
                             class='level not-selected' 
-                            ng-click='difficultyCtrl.vm.setDifficulty("blind")' 
-                            ng-class='{"selected": difficultyCtrl.vm.isBlind, "not-selected": !difficultyCtrl.vm.isBlind }'>
+                            ng-click='startCtrl.vm.setDifficulty("blind")' 
+                            ng-class='{"selected": startCtrl.vm.isBlind, "not-selected": !startCtrl.vm.isBlind }'>
                             Blind
                         </span>
                         <span class='level not-selected' id='novice' 
-                            ng-click='difficultyCtrl.vm.setDifficulty("novice")'
-                            ng-class='{"selected": difficultyCtrl.vm.isNovice, "not-selected": !difficultyCtrl.vm.isNovice }'>
+                            ng-click='startCtrl.vm.setDifficulty("novice")'
+                            ng-class='{"selected": startCtrl.vm.isNovice, "not-selected": !startCtrl.vm.isNovice }'>
                             Novice
                         </span>
                         <span class='level not-selected' id='master' 
-                            ng-click='difficultyCtrl.vm.setDifficulty("master")'
-                            ng-class='{"selected": difficultyCtrl.vm.isMaster, "not-selected": !difficultyCtrl.vm.isMaster }'>
+                            ng-click='startCtrl.vm.setDifficulty("master")'
+                            ng-class='{"selected": startCtrl.vm.isMaster, "not-selected": !startCtrl.vm.isMaster }'>
                             Master!
                         </span>
                     </div>
-
-                    <div class='start' ng-click='mainCtrl.startGame()'>Start</div>
+                    
+                    <div class='start' ng-click='startCtrl.startGame()'>Start</div>
                 </div>
 
                 <!-- div.ingame displays in-game messages and controls -->

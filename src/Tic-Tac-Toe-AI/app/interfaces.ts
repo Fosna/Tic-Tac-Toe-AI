@@ -29,3 +29,7 @@ export interface IGameStatusVm extends IGameStatusUi {
     isLost: boolean;
     isDraw: boolean;   
 }
+
+export interface IGameService {
+    
+}
