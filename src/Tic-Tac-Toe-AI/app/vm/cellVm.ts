@@ -22,4 +22,9 @@ export default class CellVm {
         this.classes = [CellVm.cellClass, CellVm.symbolToColorClass[symbol]].join(" ");
         this.symbol = symbol;
     }
+    
+    isOccupied() {
+        const isOccupied = this.symbol !== CellVm.noSymbol;
+        return isOccupied;
+    }
 }

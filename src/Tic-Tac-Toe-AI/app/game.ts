@@ -3,14 +3,12 @@
 import * as interfaces from "./interfaces";
 import State from "./state";
 import Ai from "./ai";
-import Ui from "./ui";
 import { IBoardVm } from "./vm/boardVm";
 
 
 // TODO: Consistend vm interfaces
 class Game {
     private ai: Ai;
-    private ui: Ui;
     public currentState: State;
     private status: string;
     private gameStatusVm: interfaces.IGameStatusUi;
@@ -20,13 +18,10 @@ class Game {
      * Constructs a game object to be played
      * @param autoPlayer [AIPlayer] : the AI player to be play the game with
      */
-    constructor(autoPlayer, ui, gameStatusVm: interfaces.IGameStatusUi, boardVm: IBoardVm) {
+    constructor(autoPlayer, gameStatusVm: interfaces.IGameStatusUi, boardVm: IBoardVm) {
 
         //public : initialize the ai player for this game
         this.ai = autoPlayer;
-
-        // public : ui dependency injection
-        this.ui = ui;
 
         // public : initialize the game current state to empty board configuration
         this.currentState = new State();
@@ -72,7 +67,7 @@ class Game {
             if(this.currentState.turn === "X") {
                 this.gameStatusVm.switchViewTo("human");
 
-                this.ui.humanMove(indx => this.makeAMove(indx));
+                this.boardVm.humanMove(indx => this.makeAMove(indx));
             }
             else {
                 this.gameStatusVm.switchViewTo("robot");
@@ -86,7 +81,6 @@ class Game {
     makeAMove(indx: number) {
         var next = new State(this.currentState);
         next.board[indx] = next.turn;
-        this.ui.insertAt(indx, next.turn);
         this.boardVm.insertAt(indx, next.turn);
         next.advanceTurn();
         this.advanceTo(next);

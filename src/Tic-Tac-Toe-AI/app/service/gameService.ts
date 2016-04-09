@@ -1,7 +1,6 @@
 import * as angular from "angular";
 import Game from "../game";
 import AI from "../ai";
-import Ui from "../ui"; 
 import GameStatusVm from "../vm/gameStatusVm";
 import { IBoxService } from "../service/boxService";
 import BoardVm from "../vm/boardVm";
@@ -32,8 +31,7 @@ class GameService implements IGameService {
     startGame() {
         if (this.difficulty) {
             const aiPlayer = new AI(this.difficulty);
-            const uiInstance = new Ui();
-            const game = new Game(aiPlayer, uiInstance, this.gameStatusVm, this.boardVm);
+            const game = new Game(aiPlayer, this.gameStatusVm, this.boardVm);
 
             aiPlayer.plays(game);
 

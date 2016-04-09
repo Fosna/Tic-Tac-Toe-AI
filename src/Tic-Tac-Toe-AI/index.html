@@ -6,29 +6,15 @@
     </head>
 
     <!--TODO: Consitent HTML-->
+    <!--TODO: Remove unnecessary classes-->
 
     <body ng-app='App'>
         
         <div class = 'main-container'>
             
-            <div class = 'board'>
-                <!-- data-indx following cell divs represents cell index in 1D array representation -->
-                <div class='cell' data-indx='0'></div>
-                <div class='cell' data-indx='1'></div>
-                <div class='cell' data-indx='2'></div>
-                <div class='cell' data-indx='3'></div>
-                <div class='cell' data-indx='4'></div>
-                <div class='cell' data-indx='5'></div>
-                <div class='cell' data-indx='6'></div>
-                <div class='cell' data-indx='7'></div>
-                <div class='cell' data-indx='8'></div>
-            </div>
-            
-            <br><br>
-            
-            <div class='board' ng-controller="BoardController as boardCtrl">
-                <div ng-repeat="cell in boardCtrl.vm.cells">
-                    <div class='cell' ng-class="cell.classes">{{cell.symbol}}</div>
+            <div class='board' ng-controller='BoardController as boardCtrl'>
+                <div ng-repeat='cell in boardCtrl.vm.cells'>
+                    <div class='cell' ng-class='cell.classes'' ng-click='boardCtrl.vm.cellClick($index)'>{{cell.symbol}}</div>
                 </div>
             </div>
 
