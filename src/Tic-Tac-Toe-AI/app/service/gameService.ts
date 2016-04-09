@@ -17,8 +17,6 @@ class GameService implements IGameService {
     gameStatusVm: GameStatusVm;
     
     constructor(gameStatusScopeBox: IBoxService<angular.IScope>) {
-        console.log("GameService.constructor()", gameStatusScopeBox);
-        
         this.difficulty = "";
         this.gameStatusVm = new GameStatusVm(gameStatusScopeBox);
     }

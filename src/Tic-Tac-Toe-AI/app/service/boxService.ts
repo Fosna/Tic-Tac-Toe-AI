@@ -6,10 +6,6 @@ export interface IBoxService<T> {
 
 class BoxService<T> {
     bindingValue: T;
-
-    constructor() {
-        console.log("BoxService.constructor()");
-    }
     
     getValue() {
         return this.bindingValue;

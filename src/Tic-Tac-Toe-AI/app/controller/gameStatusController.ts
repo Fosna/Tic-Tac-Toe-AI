@@ -14,7 +14,6 @@ class GameStatusController implements IGameStatusController {
         gameStatusScope: IBoxService<angular.IScope>,
         gameService: IGameService) {
             
-        console.log("GameStatusController.constructor()", $scope, gameStatusScope);
         gameStatusScope.setValue($scope);
         this.vm = gameService.gameStatusVm;
     }

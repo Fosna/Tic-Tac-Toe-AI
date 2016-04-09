@@ -15,9 +15,7 @@ class GameStatusVm implements interfaces.IGameStatusVm {
     
     constructor(gameStatusScopeBox : IBoxService<angular.IScope>) {
         this.intialControlsVisible = true;
-        this.gameStatusScopeBox = gameStatusScopeBox
-        
-        console.log("GameStatusVm.constructor()", gameStatusScopeBox);
+        this.gameStatusScopeBox = gameStatusScopeBox;
     }
     
     // TODO: Rename to show game status.
