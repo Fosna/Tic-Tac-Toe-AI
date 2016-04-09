@@ -1,8 +1,8 @@
 import * as angular from "angular";
-import {IGameService} from "../service/GameService";
+import { IGameService } from "../service/GameService";
 
 
-export interface IStartController {
+interface IStartController {
     setDifficulty(difficulty: string) : void;
     startGame() : void;
 }
@@ -18,11 +18,13 @@ class StartController implements IStartController {
     }
     
     setDifficulty(difficulty) {
+        // TODO: Remove setDifficulty from gameService. 
         this.gameService.setDifficulty(difficulty);
         this.setDifficultyFlags(difficulty);
     };
     
     startGame() {
+        // TODO: Remove setDifficulty from gameService. Pass difficulty in start game.
         this.gameService.startGame();
     };
     
@@ -34,4 +36,7 @@ class StartController implements IStartController {
 };
 
 
-export default StartController;
+export {
+    StartController as default,
+    IStartController
+};

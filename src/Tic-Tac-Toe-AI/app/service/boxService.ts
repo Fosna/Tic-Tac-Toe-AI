@@ -1,4 +1,6 @@
-export interface IBoxService<T> {
+// TODO: chekc if it's used.
+
+interface IBoxService<T> {
     bindingValue: T;
     getValue() : T;
     setValue(value: T);
@@ -16,4 +18,7 @@ class BoxService<T> {
     }
 }
 
-export default BoxService;
+export {
+    BoxService as default,
+    IBoxService
+};

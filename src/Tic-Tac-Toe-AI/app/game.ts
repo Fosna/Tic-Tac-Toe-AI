@@ -1,24 +1,24 @@
 // TODO: Move to model folder.
 
-import * as interfaces from "./interfaces";
 import State from "./state";
 import Ai from "./ai";
 import { IBoardVm } from "./vm/boardVm";
+import { IGameStatusUi } from "./vm/gameStatusVm";
 
 
-// TODO: Consistend vm interfaces
+// TODO: Consistent vm interfaces
 class Game {
     private ai: Ai;
     public currentState: State;
     private status: string;
-    private gameStatusVm: interfaces.IGameStatusUi;
+    private gameStatusVm: IGameStatusUi
     private boardVm: IBoardVm;
     
     /*
      * Constructs a game object to be played
      * @param autoPlayer [AIPlayer] : the AI player to be play the game with
      */
-    constructor(autoPlayer, gameStatusVm: interfaces.IGameStatusUi, boardVm: IBoardVm) {
+    constructor(autoPlayer, gameStatusVm: IGameStatusUi, boardVm: IBoardVm) {
 
         //public : initialize the ai player for this game
         this.ai = autoPlayer;

@@ -2,8 +2,7 @@ import * as angular from "angular";
 import { IBoardVm } from "../vm/boardVm";
 import { IGameService } from "../service/gameService";
 
-// TODO: Export all interfaces at the end of the file.
-export interface IBoardController {
+interface IBoardController {
     vm: IBoardVm;
 }
 
@@ -17,4 +16,8 @@ class BoardController {
     }
 }
 
-export default BoardController;
+export {
+    IBoardController,
+    BoardController as default
+};
+    

@@ -3,7 +3,7 @@ import {IBoxService} from "../service/boxService";
 import {IGameService} from "../service/gameService";
 import GameStatusVm from "../vm/gameStatusVm";
 
-export interface IGameStatusController {
+interface IGameStatusController {
     vm: GameStatusVm;
 }
 
@@ -19,4 +19,7 @@ class GameStatusController implements IGameStatusController {
     }
 }
 
-export default GameStatusController;
+export {
+    GameStatusController as default,
+    IGameStatusController
+};

@@ -2,7 +2,23 @@ import * as interfaces from "../interfaces";
 import * as angular from "angular";
 import {IBoxService} from "../service/boxService";
 
-class GameStatusVm implements interfaces.IGameStatusVm {
+interface IGameStatusUi {
+    switchViewTo(turn: string); 
+}
+
+interface IGameStatusVm extends IGameStatusUi {
+    intialControlsVisible: boolean;
+    
+    // TODO: ng-class binding should be smarter
+    isHuman: boolean;
+    isAi: boolean;
+    isWon: boolean;
+    isLost: boolean;
+    isDraw: boolean;   
+}
+
+
+class GameStatusVm implements IGameStatusVm {
     intialControlsVisible: boolean;
     
     isHuman: boolean;
@@ -26,12 +42,13 @@ class GameStatusVm implements interfaces.IGameStatusVm {
         this.isDraw = turn === "draw";
                 
         // TODO: Remove after jQuery is removed.
-        this.gameStatusScopeBox.getValue().$evalAsync();
+        // TODO: Remove gameStatusScopeBox. 
+        // this.gameStatusScopeBox.getValue().$evalAsync();
     };
     
     switchViewTo(turn: string) {
         if(this.intialControlsVisible) {
-            //if the game is just starting
+            // If the game is just starting.
             this.intialControlsVisible = false;
         }
         
@@ -39,4 +56,8 @@ class GameStatusVm implements interfaces.IGameStatusVm {
     };
 }
 
-export default GameStatusVm;
+export {
+    GameStatusVm as default,
+    IGameStatusUi,
+    IGameStatusVm
+}

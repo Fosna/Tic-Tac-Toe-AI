@@ -5,7 +5,7 @@ import GameStatusVm from "../vm/gameStatusVm";
 import { IBoxService } from "../service/boxService";
 import BoardVm from "../vm/boardVm";
 
-export interface IGameService {
+interface IGameService {
     gameStatusVm: GameStatusVm;
     boardVm: BoardVm;
     
@@ -40,4 +40,7 @@ class GameService implements IGameService {
     }
 }
 
-export default GameService
+export {
+    GameService as default,
+    IGameService
+}

@@ -1,16 +1,16 @@
 import CellVm from "./cellVm";
 
 // TODO: Game should depend on IBoardUi
-export interface IBoardUi {
+interface IBoardUi {
     insertAt(indx: number, turn: string): void;
     humanMove(callback: (indx: number) => void): void;
 }
 
-export interface IBoardVm extends IBoardUi {
+interface IBoardVm extends IBoardUi {
     cells: Array<CellVm>;    
 }
 
-export default class BoardVm implements IBoardVm {
+class BoardVm implements IBoardVm {
     cells: Array<CellVm>;
     private humanMoveCallback: (indx: number) => void;
     private isHumanMove: boolean;
@@ -40,3 +40,9 @@ export default class BoardVm implements IBoardVm {
         }
     }
 }
+
+export {
+    BoardVm as default,
+    IBoardUi,
+    IBoardVm
+};
