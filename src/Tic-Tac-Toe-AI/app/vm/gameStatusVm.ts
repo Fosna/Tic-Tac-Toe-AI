@@ -1,4 +1,3 @@
-import * as interfaces from "../interfaces";
 import * as angular from "angular";
 import {IBoxService} from "../service/boxService";
 

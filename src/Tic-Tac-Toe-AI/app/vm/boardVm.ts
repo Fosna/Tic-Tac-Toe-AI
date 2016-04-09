@@ -1,17 +1,16 @@
-import CellVm from "./cellVm";
+import * as cellVm from "./cellVm";
 
-// TODO: Game should depend on IBoardUi
 interface IBoardUi {
     insertAt(indx: number, turn: string): void;
     humanMove(callback: (indx: number) => void): void;
 }
 
 interface IBoardVm extends IBoardUi {
-    cells: Array<CellVm>;    
+    cells: Array<cellVm.ICellVm>;    
 }
 
 class BoardVm implements IBoardVm {
-    cells: Array<CellVm>;
+    cells: Array<cellVm.ICellVm>;
     private humanMoveCallback: (indx: number) => void;
     private isHumanMove: boolean;
     
@@ -19,7 +18,7 @@ class BoardVm implements IBoardVm {
         this.cells = [];
         
         for(let i = 0; i < 9; i++) {
-            this.cells.push(new CellVm());
+            this.cells.push(new cellVm.CellVm());
         }
         
         this.isHumanMove = false;

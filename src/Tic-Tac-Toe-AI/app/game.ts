@@ -2,7 +2,7 @@
 
 import State from "./state";
 import Ai from "./ai";
-import { IBoardVm } from "./vm/boardVm";
+import { IBoardUi } from "./vm/boardVm";
 import { IGameStatusUi } from "./vm/gameStatusVm";
 
 
@@ -12,13 +12,13 @@ class Game {
     public currentState: State;
     private status: string;
     private gameStatusVm: IGameStatusUi
-    private boardVm: IBoardVm;
+    private boardVm: IBoardUi;
     
     /*
      * Constructs a game object to be played
      * @param autoPlayer [AIPlayer] : the AI player to be play the game with
      */
-    constructor(autoPlayer, gameStatusVm: IGameStatusUi, boardVm: IBoardVm) {
+    constructor(autoPlayer, gameStatusVm: IGameStatusUi, boardVm: IBoardUi) {
 
         //public : initialize the ai player for this game
         this.ai = autoPlayer;

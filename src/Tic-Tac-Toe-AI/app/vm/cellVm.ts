@@ -1,6 +1,11 @@
-// TODO: add interface
+interface ICellVm {
+    classes: string;
+    symbol: string;
+    setSymbol(symbol: string): void;
+    isOccupied(): boolean;
+}
 
-export default class CellVm {
+class CellVm {
     classes: string;
     symbol: string;
     
@@ -27,4 +32,10 @@ export default class CellVm {
         const isOccupied = this.symbol !== CellVm.noSymbol;
         return isOccupied;
     }
+}
+
+export {
+    CellVm as default,
+    CellVm,
+    ICellVm
 }

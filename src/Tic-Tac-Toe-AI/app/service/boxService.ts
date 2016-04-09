@@ -1,4 +1,4 @@
-// TODO: chekc if it's used.
+// TODO: check if it's used.
 
 interface IBoxService<T> {
     bindingValue: T;
