@@ -3,10 +3,12 @@ import Game from "../game";
 import AI from "../ai";
 import Ui from "../ui"; 
 import GameStatusVm from "../vm/gameStatusVm";
-import {IBoxService} from "../service/boxService";
+import { IBoxService } from "../service/boxService";
+import BoardVm from "../vm/boardVm";
 
 export interface IGameService {
     gameStatusVm: GameStatusVm;
+    boardVm: BoardVm;
     
     setDifficulty(difficulty: string) : void;
     startGame() : void;
@@ -15,10 +17,12 @@ export interface IGameService {
 class GameService implements IGameService {
     private difficulty: string;
     gameStatusVm: GameStatusVm;
+    boardVm: BoardVm;
     
     constructor(gameStatusScopeBox: IBoxService<angular.IScope>) {
         this.difficulty = "";
         this.gameStatusVm = new GameStatusVm(gameStatusScopeBox);
+        this.boardVm = new BoardVm();
     }
     
     setDifficulty(difficulty) {
@@ -29,7 +33,7 @@ class GameService implements IGameService {
         if (this.difficulty) {
             const aiPlayer = new AI(this.difficulty);
             const uiInstance = new Ui();
-            const game = new Game(aiPlayer, uiInstance, this.gameStatusVm);
+            const game = new Game(aiPlayer, uiInstance, this.gameStatusVm, this.boardVm);
 
             aiPlayer.plays(game);
 

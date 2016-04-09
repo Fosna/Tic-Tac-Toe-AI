@@ -4,20 +4,23 @@ import * as interfaces from "./interfaces";
 import State from "./state";
 import Ai from "./ai";
 import Ui from "./ui";
+import { IBoardVm } from "./vm/boardVm";
 
 
+// TODO: Consistend vm interfaces
 class Game {
     private ai: Ai;
     private ui: Ui;
     public currentState: State;
     private status: string;
     private gameStatusVm: interfaces.IGameStatusUi;
+    private boardVm: IBoardVm;
     
     /*
      * Constructs a game object to be played
      * @param autoPlayer [AIPlayer] : the AI player to be play the game with
      */
-    constructor(autoPlayer, ui, gameStatusVm: interfaces.IGameStatusUi) {
+    constructor(autoPlayer, ui, gameStatusVm: interfaces.IGameStatusUi, boardVm: IBoardVm) {
 
         //public : initialize the ai player for this game
         this.ai = autoPlayer;
@@ -41,6 +44,7 @@ class Game {
         this.status = "beginning";
         
         this.gameStatusVm = gameStatusVm;
+        this.boardVm = boardVm;
     }
 
     /*
@@ -83,6 +87,7 @@ class Game {
         var next = new State(this.currentState);
         next.board[indx] = next.turn;
         this.ui.insertAt(indx, next.turn);
+        this.boardVm.insertAt(indx, next.turn);
         next.advanceTurn();
         this.advanceTo(next);
     }

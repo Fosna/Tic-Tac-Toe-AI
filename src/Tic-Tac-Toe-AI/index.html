@@ -5,28 +5,38 @@
         <link rel = 'stylesheet' type = 'text/css' href = 'styles/ui.css'>
     </head>
 
-    <body ng-app="App">
+    <!--TODO: Consitent HTML-->
+
+    <body ng-app='App'>
         
         <div class = 'main-container'>
             
             <div class = 'board'>
                 <!-- data-indx following cell divs represents cell index in 1D array representation -->
-                <div class='cell' data-indx = "0" ></div>
-                <div class='cell' data-indx = "1" ></div>
-                <div class='cell' data-indx = "2" ></div>
-                <div class='cell' data-indx = "3" ></div>
-                <div class='cell' data-indx = "4" ></div>
-                <div class='cell' data-indx = "5" ></div>
-                <div class='cell' data-indx = "6" ></div>
-                <div class='cell' data-indx = "7" ></div>
-                <div class='cell' data-indx = "8" ></div>
+                <div class='cell' data-indx='0'></div>
+                <div class='cell' data-indx='1'></div>
+                <div class='cell' data-indx='2'></div>
+                <div class='cell' data-indx='3'></div>
+                <div class='cell' data-indx='4'></div>
+                <div class='cell' data-indx='5'></div>
+                <div class='cell' data-indx='6'></div>
+                <div class='cell' data-indx='7'></div>
+                <div class='cell' data-indx='8'></div>
+            </div>
+            
+            <br><br>
+            
+            <div class='board' ng-controller="BoardController as boardCtrl">
+                <div ng-repeat="cell in boardCtrl.vm.cells">
+                    <div class='cell' ng-class="cell.classes">{{cell.symbol}}</div>
+                </div>
             </div>
 
-            <div class='control' ng-controller="GameStatusController as statusCtrl">
+            <div class='control' ng-controller='GameStatusController as statusCtrl'>
                 
                 <!-- div.intial displays the starting controls -->
                 
-                <div class='intial' ng-show="statusCtrl.vm.intialControlsVisible" ng-controller='StartController as startCtrl'>
+                <div class='intial' ng-show='statusCtrl.vm.intialControlsVisible' ng-controller='StartController as startCtrl'>
                     <div class = 'difficulty'>
                         <span id='blind'
                             class='level not-selected' 
@@ -50,17 +60,17 @@
                 </div>
 
                 <!-- div.ingame displays in-game messages and controls -->
-                <div class = 'ingame' id="human" ng-show='statusCtrl.vm.isHuman'>It's your turn ...</div>
-                <div class = 'ingame' id="ai" ng-show='statusCtrl.vm.isAi'>
-                    <img src = "imgs/robot.png" id = "robot" class = "robot" />
+                <div class = 'ingame' id='human' ng-show='statusCtrl.vm.isHuman'>It's your turn ...</div>
+                <div class = 'ingame' id='ai' ng-show='statusCtrl.vm.isAi'>
+                    <img src = 'imgs/robot.png' id = 'robot' class = 'robot' />
                     <p>Wait for it ...</p>
                 </div>
-                <div class = 'ingame' id="won" ng-show='statusCtrl.vm.isWon'>You won !</div>
-                <div class = 'ingame' id="lost" ng-show='statusCtrl.vm.isLost'>You lost !</div>
-                <div class = 'ingame' id="draw" ng-show='statusCtrl.vm.isDraw'>It's a Draw</div>
+                <div class = 'ingame' id='won' ng-show='statusCtrl.vm.isWon'>You won !</div>
+                <div class = 'ingame' id='lost' ng-show='statusCtrl.vm.isLost'>You lost !</div>
+                <div class = 'ingame' id='draw' ng-show='statusCtrl.vm.isDraw'>It's a Draw</div>
             </div>
         </div>
 
-        <script src = "build/bundle.js"></script>
+        <script src = 'build/bundle.js'></script>
     </body>
 </html>
