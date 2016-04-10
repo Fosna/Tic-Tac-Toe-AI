@@ -9,19 +9,13 @@ import BoardController from "./controller/BoardController";
 
 
 angular.module("App", []).
-    service("GameStatusScopeService", [BoxService]).
-    service("GameService", 
-        ["GameStatusScopeService", 
-            GameService
-        ]).
+    service("GameService", [GameService]).
     controller("StartController", 
         ["GameService", 
             StartController
         ]).
     controller("GameStatusController", 
-        ["$scope", 
-            "GameStatusScopeService",
-            "GameService", 
+        ["GameService", 
             GameStatusController
         ]).
     controller("BoardController", 

@@ -10,11 +10,7 @@ interface IGameStatusController {
 class GameStatusController implements IGameStatusController {
     vm: GameStatusVm;
     
-    constructor($scope: angular.IScope, 
-        gameStatusScope: IBoxService<angular.IScope>,
-        gameService: IGameService) {
-            
-        gameStatusScope.setValue($scope);
+    constructor(gameService: IGameService) {
         this.vm = gameService.gameStatusVm;
     }
 }

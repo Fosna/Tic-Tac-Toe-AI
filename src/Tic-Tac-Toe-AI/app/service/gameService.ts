@@ -2,7 +2,6 @@ import * as angular from "angular";
 import Game from "../game";
 import AI from "../ai";
 import GameStatusVm from "../vm/gameStatusVm";
-import { IBoxService } from "../service/boxService";
 import BoardVm from "../vm/boardVm";
 
 interface IGameService {
@@ -18,9 +17,9 @@ class GameService implements IGameService {
     gameStatusVm: GameStatusVm;
     boardVm: BoardVm;
     
-    constructor(gameStatusScopeBox: IBoxService<angular.IScope>) {
+    constructor() {
         this.difficulty = "";
-        this.gameStatusVm = new GameStatusVm(gameStatusScopeBox);
+        this.gameStatusVm = new GameStatusVm();
         this.boardVm = new BoardVm();
     }
     
