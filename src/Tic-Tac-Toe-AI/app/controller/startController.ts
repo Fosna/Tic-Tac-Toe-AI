@@ -5,15 +5,23 @@ import { IGameService } from "../service/GameService";
 interface IStartController {
     setDifficulty(difficulty: string): void;
     startGame(): void;
+    
+    gameService: IGameService;
+    blindClass: string;
+    noviceClass: string;
+    masterClass: string;
 }
 
 class StartController implements IStartController {
     gameService: IGameService;
-    isBlind: boolean;
-    isNovice: boolean;
-    isMaster: boolean;
+    blindClass: string;
+    noviceClass: string;
+    masterClass: string;
     
     private difficulty: string;
+    
+    private static selectedClass = "";
+    private static notSelectedClass = "not-selected";
     
     constructor(gameService: IGameService) {
         this.gameService = gameService;
@@ -21,17 +29,24 @@ class StartController implements IStartController {
     
     setDifficulty(difficulty) { 
         this.difficulty = difficulty;
-        this.setDifficultyFlags(difficulty);
+        this.setClasses(difficulty);
     };
     
     startGame() {
         this.gameService.startGame(this.difficulty);
     };
     
-    private setDifficultyFlags = (difficulty: string) => {
-        this.isBlind = difficulty === "blind";
-        this.isNovice = difficulty === "novice";
-        this.isMaster = difficulty === "master";
+    private setClasses = (difficulty: string) => {
+        // TODO: consider using dict.
+        this.blindClass = this.noviceClass = this.masterClass = StartController.notSelectedClass;
+        
+        if (difficulty === "blind") {
+            this.blindClass = StartController.selectedClass;
+        } else if (difficulty === "novice") {
+            this.noviceClass = StartController.selectedClass;
+        } else if (difficulty === "master") {
+            this.masterClass = StartController.selectedClass;
+        }
     }
 };
 
