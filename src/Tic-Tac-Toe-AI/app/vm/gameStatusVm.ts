@@ -7,7 +7,6 @@ interface IGameStatusUi {
 interface IGameStatusVm extends IGameStatusUi {
     intialControlsVisible: boolean;
     
-    // TODO: ng-class binding should be smarter
     isHuman: boolean;
     isAi: boolean;
     isWon: boolean;
@@ -29,7 +28,6 @@ class GameStatusVm implements IGameStatusVm {
         this.intialControlsVisible = true;
     }
     
-    // TODO: Rename to show game status.
     private showGameStatus(turn) {
         this.isHuman = turn === "human";
         this.isWon = turn === "won";

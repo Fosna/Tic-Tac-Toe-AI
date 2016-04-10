@@ -9,9 +9,6 @@ class State {
      * @param old [State]: old state to intialize the new state
      */
     constructor(old: State = null) {
-        // TODO: Show object destructuring.
-        // TODO: Extract default initialization to some method.
-
         /*
          * public : the player who has the turn to player
          */
@@ -32,10 +29,13 @@ class State {
          */
         this.board = [];
 
-        // TODO: Extract to copy old board.
-        /* Begin Object Construction */
         if(old) {
-            // if the state is constructed using a copy of another state
+            this.copyOldBoard(old);
+        }
+    }
+    
+    private copyOldBoard(old: State) {
+        // if the state is constructed using a copy of another state
             var len = old.board.length;
             this.board = new Array(len);
             for(var itr = 0 ; itr < len ; itr++) {
@@ -45,10 +45,7 @@ class State {
             this.oMovesCount = old.oMovesCount;
             this.result = old.result;
             this.turn = old.turn;
-        }
-        /* End Object Construction */
     }
-    
 
     /*
      * public : advances the turn in a the state

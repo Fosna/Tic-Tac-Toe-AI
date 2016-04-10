@@ -35,6 +35,7 @@ class BoardVm implements IBoardVm {
     
     cellClick(indx) {
         if (this.cells[indx].isOccupied() === false && this.isHumanMove) {
+            this.isHumanMove = false;
             this.humanMoveCallback(indx);
         }
     }
