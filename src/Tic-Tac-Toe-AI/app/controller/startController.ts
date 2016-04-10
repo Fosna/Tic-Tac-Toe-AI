@@ -3,8 +3,8 @@ import { IGameService } from "../service/GameService";
 
 
 interface IStartController {
-    setDifficulty(difficulty: string) : void;
-    startGame() : void;
+    setDifficulty(difficulty: string): void;
+    startGame(): void;
 }
 
 class StartController implements IStartController {
@@ -13,19 +13,19 @@ class StartController implements IStartController {
     isNovice: boolean;
     isMaster: boolean;
     
+    private difficulty: string;
+    
     constructor(gameService: IGameService) {
         this.gameService = gameService;
     }
     
-    setDifficulty(difficulty) {
-        // TODO: Remove setDifficulty from gameService. 
-        this.gameService.setDifficulty(difficulty);
+    setDifficulty(difficulty) { 
+        this.difficulty = difficulty;
         this.setDifficultyFlags(difficulty);
     };
     
     startGame() {
-        // TODO: Remove setDifficulty from gameService. Pass difficulty in start game.
-        this.gameService.startGame();
+        this.gameService.startGame(this.difficulty);
     };
     
     private setDifficultyFlags = (difficulty: string) => {

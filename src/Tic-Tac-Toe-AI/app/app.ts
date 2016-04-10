@@ -1,6 +1,5 @@
 import * as angular from "angular";
 
-import BoxService from "./service/BoxService";
 import GameService from "./service/GameService";
 
 import StartController from "./controller/StartController";

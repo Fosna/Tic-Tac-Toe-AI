@@ -6,7 +6,6 @@ import { IBoardUi } from "./vm/boardVm";
 import { IGameStatusUi } from "./vm/gameStatusVm";
 
 
-// TODO: Consistent vm interfaces
 class Game {
     private ai: Ai;
     public currentState: State;

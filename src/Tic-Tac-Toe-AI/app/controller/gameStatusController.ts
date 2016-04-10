@@ -1,14 +1,13 @@
 import * as angular from "angular";
-import {IBoxService} from "../service/boxService";
 import {IGameService} from "../service/gameService";
-import GameStatusVm from "../vm/gameStatusVm";
+import {IGameStatusVm} from "../vm/gameStatusVm";
 
 interface IGameStatusController {
-    vm: GameStatusVm;
+    vm: IGameStatusVm;
 }
 
 class GameStatusController implements IGameStatusController {
-    vm: GameStatusVm;
+    vm: IGameStatusVm;
     
     constructor(gameService: IGameService) {
         this.vm = gameService.gameStatusVm;

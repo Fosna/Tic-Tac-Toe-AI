@@ -8,30 +8,24 @@ interface IGameService {
     gameStatusVm: GameStatusVm;
     boardVm: BoardVm;
     
-    setDifficulty(difficulty: string) : void;
-    startGame() : void;
+    startGame(difficulty: string) : void;
 }
 
 class GameService implements IGameService {
-    private difficulty: string;
     gameStatusVm: GameStatusVm;
     boardVm: BoardVm;
     
     constructor() {
-        this.difficulty = "";
         this.gameStatusVm = new GameStatusVm();
         this.boardVm = new BoardVm();
     }
     
-    setDifficulty(difficulty) {
-        this.difficulty = difficulty;
-    }
-    
-    startGame() {
-        if (this.difficulty) {
-            const aiPlayer = new AI(this.difficulty);
+    startGame(difficulty) {
+        if (difficulty) {
+            const aiPlayer = new AI(difficulty);
             const game = new Game(aiPlayer, this.gameStatusVm, this.boardVm);
 
+            // TODO: Consider removing aiPlayer reference to the game object.
             aiPlayer.plays(game);
 
             game.start();
