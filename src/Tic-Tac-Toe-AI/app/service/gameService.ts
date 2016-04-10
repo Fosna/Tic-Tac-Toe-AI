@@ -1,6 +1,6 @@
 import * as angular from "angular";
-import Game from "../game";
-import AI from "../ai";
+import Game from "../model/game";
+import AI from "../model/ai";
 import GameStatusVm from "../vm/gameStatusVm";
 import BoardVm from "../vm/boardVm";
 

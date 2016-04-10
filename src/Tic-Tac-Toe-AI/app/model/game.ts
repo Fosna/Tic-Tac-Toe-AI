@@ -2,8 +2,8 @@
 
 import State from "./state";
 import Ai from "./ai";
-import { IBoardUi } from "./vm/boardVm";
-import { IGameStatusUi } from "./vm/gameStatusVm";
+import { IBoardUi } from "../vm/boardVm";
+import { IGameStatusUi } from "../vm/gameStatusVm";
 
 
 class Game {
