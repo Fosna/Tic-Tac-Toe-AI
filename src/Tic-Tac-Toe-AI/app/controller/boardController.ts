@@ -1,6 +1,5 @@
-import * as angular from "angular";
-import { IBoardVm } from "../vm/boardVm";
-import { IGameService } from "../service/gameService";
+import {IBoardVm} from "../vm/boardVm";
+import {IGameService} from "../service/gameService";
 
 interface IBoardController {
     vm: IBoardVm;

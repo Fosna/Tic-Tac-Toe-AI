@@ -1,4 +1,3 @@
-import * as angular from "angular";
 import {IGameService} from "../service/gameService";
 import {IGameStatusVm} from "../vm/gameStatusVm";
 
