@@ -1,4 +1,3 @@
-import * as angular from "angular";
 import Game from "../model/game";
 import AI from "../model/ai";
 import GameStatusVm from "../vm/gameStatusVm";

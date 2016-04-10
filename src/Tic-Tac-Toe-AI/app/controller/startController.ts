@@ -1,6 +1,5 @@
 import { IGameService } from "../service/GameService";
 
-
 interface IStartController {
     setDifficulty(difficulty: string): void;
     startGame(): void;
