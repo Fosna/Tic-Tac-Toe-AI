@@ -6,7 +6,6 @@ import State from "./state";
 class AI {
 
     private levelOfIntelligence: string;
-    private game: Game;
 
     /*
      * Constructs an AI player with a specific level of intelligence
@@ -15,9 +14,6 @@ class AI {
     constructor(level) {
         //private attribute: level of intelligence the player has
         this.levelOfIntelligence = level;
-
-        //private attribute: the game the player is playing
-        this.game = null;
     }
 
     /*
@@ -74,10 +70,9 @@ class AI {
     /*
      * private function: make the ai player take a blind move
      * that is: choose the cell to place its symbol randomly
-     * @param turn [String]: the player to play, either X or O
      */
-    takeABlindMove(turn: string) {
-        var available = this.game.currentState.emptyCells();
+    takeABlindMove(currentState: State) {
+        var available = currentState.emptyCells();
         var randomCell = available[Math.floor(Math.random() * available.length)];
         var action = new AiAction(randomCell);
 
@@ -89,13 +84,13 @@ class AI {
      * that is: mix between choosing the optimal and suboptimal minimax decisions
      * @param turn [String]: the player to play, either X or O
      */
-    takeANoviceMove(turn: string) {
-        var available = this.game.currentState.emptyCells();
+    takeANoviceMove(currentState: State) {
+        var available = currentState.emptyCells();
 
         //enumerate and calculate the score for each available actions to the ai player
         var availableActions = available.map(pos => {
             var action =  new AiAction(pos); //create the action object
-            var nextState = action.applyTo(this.game.currentState); //get next state by applying the action
+            var nextState = action.applyTo(currentState); //get next state by applying the action
 
             action.minimaxVal = this.minimaxValue(nextState); //calculate and set the action's minimax value
 
@@ -103,7 +98,7 @@ class AI {
         });
 
         //sort the enumerated actions list by score
-        if(turn === "X")
+        if(currentState.turn === "X")
         //X maximizes --> sort the actions in a descending manner to have the action with maximum minimax at first
             availableActions.sort(AiAction.DESCENDING);
         else
@@ -136,13 +131,13 @@ class AI {
      * that is: choose the optimal minimax decision
      * @param turn [String]: the player to play, either X or O
      */
-    takeAMasterMove(turn: string) {
-        var available = this.game.currentState.emptyCells();
+    takeAMasterMove(currentState: State) {
+        var available = currentState.emptyCells();
 
         //enumerate and calculate the score for each avaialable actions to the ai player
         var availableActions = available.map(pos => {
             var action =  new AiAction(pos); //create the action object
-            var next = action.applyTo(this.game.currentState); //get next state by applying the action
+            var next = action.applyTo(currentState); //get next state by applying the action
 
             action.minimaxVal = this.minimaxValue(next); //calculate and set the action's minmax value
 
@@ -150,7 +145,7 @@ class AI {
         });
 
         //sort the enumerated actions list by score
-        if(turn === "X")
+        if(currentState.turn === "X")
         //X maximizes --> sort the actions in a descending manner to have the action with maximum minimax at first
             availableActions.sort(AiAction.DESCENDING);
         else
@@ -163,31 +158,22 @@ class AI {
         return chosenAction.movePosition;
     }
 
-
-    /*
-     * public method to specify the game the ai player will play
-     * @param game [Game] : the game the ai will play
-     */
-    plays(game: Game){
-        this.game = game;
-    };
-
     /*
      * public function: notify the ai player that it's its turn
      * @param turn [String]: the player to play, either X or O
      */
-    notify(turn: string, callback: (number) => any) {
+    notify(currentState: State, callback: (number) => any) {
         let indx = null;
         switch(this.levelOfIntelligence) {
             //invoke the desired behavior based on the level chosen
             case "blind": 
-                indx = this.takeABlindMove(turn); 
+                indx = this.takeABlindMove(currentState); 
                 break;
             case "novice": 
-                indx = this.takeANoviceMove(turn); 
+                indx = this.takeANoviceMove(currentState); 
                 break;
             case "master": 
-                indx = this.takeAMasterMove(turn); 
+                indx = this.takeAMasterMove(currentState); 
                 break;
         }
 

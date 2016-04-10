@@ -25,9 +25,6 @@ class GameService implements IGameService {
             const aiPlayer = new AI(difficulty);
             const game = new Game(aiPlayer, this.gameStatusVm, this.boardVm);
 
-            // TODO: Consider removing aiPlayer reference to the game object.
-            aiPlayer.plays(game);
-
             game.start();
         }
     }

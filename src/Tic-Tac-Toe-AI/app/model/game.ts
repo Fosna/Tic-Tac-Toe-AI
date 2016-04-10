@@ -1,5 +1,3 @@
-// TODO: Move to model folder.
-
 import State from "./state";
 import Ai from "./ai";
 import { IBoardUi } from "../vm/boardVm";
@@ -72,7 +70,7 @@ class Game {
                 this.gameStatusVm.switchViewTo("robot");
 
                 //notify the AI player its turn has come up
-                this.ai.notify(this.currentState.turn, indx => this.makeAMove(indx));
+                this.ai.notify(this.currentState, indx => this.makeAMove(indx));
             }
         }
     }
