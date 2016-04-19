@@ -12,7 +12,7 @@
             
             <div class='board' ng-controller='BoardController as boardCtrl'>
                 <div ng-repeat='cell in boardCtrl.vm.cells'>
-                    <div class='cell' ng-class='cell.classes'' ng-click='boardCtrl.vm.cellClick($index)'>{{cell.symbol}}</div>
+                    <div class='cell' ng-class='cell.classes' ng-click='boardCtrl.vm.cellClick($index)'>{{cell.symbol}}</div>
                 </div>
             </div>
 

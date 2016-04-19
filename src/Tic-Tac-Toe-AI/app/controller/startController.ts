@@ -18,11 +18,12 @@ class StartController implements IStartController {
     
     private difficulty: string;
     
-    private static selectedClass = "";
-    private static notSelectedClass = "not-selected";
+    private static selectedClass = "level";
+    private static notSelectedClass = "level not-selected";
     
     constructor(gameService: IGameService) {
         this.gameService = gameService;
+        this.setClasses("none");
     }
     
     setDifficulty(difficulty) { 
@@ -35,7 +36,6 @@ class StartController implements IStartController {
     };
     
     private setClasses = (difficulty: string) => {
-        // TODO: consider using dict.
         this.blindClass = this.noviceClass = this.masterClass = StartController.notSelectedClass;
         
         if (difficulty === "blind") {
