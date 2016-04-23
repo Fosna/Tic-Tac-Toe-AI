@@ -12,7 +12,7 @@ class GameStoreClass extends EventEmitter {
         
         this.humanMoveCallback = null;
         const cells = [];
-        for(let i = 0; i < 0; i++) {
+        for(let i = 0; i < 9; i++) {
             cells.push(null);
         }
         this.cells = cells;

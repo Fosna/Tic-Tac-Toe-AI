@@ -7,11 +7,8 @@ const GameStatus = React.createClass({
         
         let gameStatusComponent = <Difficulty />
         if (gameStatus) {
-            console.log(gameStatus);
-            
-            gameStatusComponent = (<h1> { gameStatus } </h1>);
-            
             switch(gameStatus) {
+                // TODO: Refactor magic strings
                 case "human":
                     gameStatusComponent = (<div>It's your turn ...</div>);
                     break;
@@ -25,8 +22,7 @@ const GameStatus = React.createClass({
                 case "won":
                     gameStatusComponent = (<div>You won !</div>);
                     break;
-                // TODO: check status magic strings
-                case "o-won":
+                case "lost":
                     gameStatusComponent = (<div>You lost !</div>); 
                     break;
                 case "draw":

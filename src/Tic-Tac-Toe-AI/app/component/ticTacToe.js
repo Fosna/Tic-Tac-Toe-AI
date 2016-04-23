@@ -7,7 +7,8 @@ import Board from "./board.js";
 const TicTacToe = React.createClass({
     getInitialState: function () {
         return {
-            gameStatus: GameStore.getGameStatus()
+            gameStatus: GameStore.getGameStatus(),
+            cells: GameStore.getCells()
         }
     },
     
@@ -36,7 +37,7 @@ const TicTacToe = React.createClass({
     render: function () {
         return (
             <div>
-                <Board />
+                <Board cells={ this.state.cells } />
                 <GameStatus gameStatus={ this.state.gameStatus } />
             </div>
         );

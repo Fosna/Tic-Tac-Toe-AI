@@ -9,7 +9,7 @@ const Cell = React.createClass({
     
     render: function () {
         return (
-            <div className='cell' onClick={ this.onCellClick }>{ this.props.index }</div>
+            <div className='cell' onClick={ this.onCellClick }>{ this.props.symbol }</div>
         );
     }
 });
