@@ -1,9 +1,12 @@
 import * as React from "react";
+import Difficulty from "./difficulty.js";
 
-var TicTacToe = React.createClass({
+const TicTacToe = React.createClass({
     render: function () {
         return (
-            <h1>Monkey</h1>
+            <div className='control' ng-controller='GameStatusController as statusCtrl'>
+                <Difficulty />
+            </div>
         );
     }
 });
