@@ -13,4 +13,18 @@ Actions.difficultySet = function(difficulty) {
     Dispatcher.dispatch(action);
 };
 
+Actions.cellClicked = function (index) {
+    
+    
+    const action = {
+        actionType: ActionTypes.CELL_CLICKED,
+        index: index
+    };
+    
+    console.log("in Actions.cellClicked", index, action);
+    
+    Dispatcher.dispatch(action);
+       
+};
+
 export default Actions;

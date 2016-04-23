@@ -1,5 +1,7 @@
 const DIFFICULTY_SET = "DIFFICULTY_SET";
+const CELL_CLICKED = "CELL_CLICKED";
 
 export {
     DIFFICULTY_SET,
+    CELL_CLICKED,
 };
