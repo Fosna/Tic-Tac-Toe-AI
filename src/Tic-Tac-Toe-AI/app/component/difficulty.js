@@ -4,8 +4,6 @@ import Actions from "../action/actions.js";
 // TODO: I don't like that actions isn't passed as dependency to react class.
 const Difficulty = React.createClass({
     getInitialState: function () {
-        console.log("getInitialState called");
-        
         const newState = this.createNewState(null);
         return newState;
     },

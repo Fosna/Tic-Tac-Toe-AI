@@ -1,0 +1,5 @@
+const GAME_STATUS_CHANGE = "GAME_STATUS_CHANGE";
+
+export default {
+    GAME_STATUS_CHANGE
+}
