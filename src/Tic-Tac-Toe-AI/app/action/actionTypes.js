@@ -3,5 +3,5 @@ const CELL_CLICKED = "CELL_CLICKED";
 
 export {
     DIFFICULTY_SET,
-    CELL_CLICKED,
+    CELL_CLICKED
 };

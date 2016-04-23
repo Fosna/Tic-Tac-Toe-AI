@@ -10,6 +10,13 @@ class GameStoreClass extends EventEmitter {
     constructor() {
         super();
         
+        this.humanMoveCallback = null;
+        const cells = [];
+        for(let i = 0; i < 0; i++) {
+            cells.push(null);
+        }
+        this.cells = cells;
+        
         // bind this
         Dispatcher.register(action => this.dispatcherListener(action));
     }
@@ -19,6 +26,9 @@ class GameStoreClass extends EventEmitter {
         switch (action.actionType) {
             case ActionTypes.DIFFICULTY_SET:
                 this.startGame(action.difficulty);
+                break;
+            case ActionTypes.CELL_CLICKED:
+                this.humanMadeAMove(action.index);
                 break;
         }
     }
@@ -32,6 +42,13 @@ class GameStoreClass extends EventEmitter {
         }
     }
     
+    humanMadeAMove(cellIndex) {
+        if (this.gameStatus === "human") {
+            this.humanMoveCallback(cellIndex);
+        }
+        
+    }
+    
     switchViewTo(gameStatus) {
         this.gameStatus = gameStatus;
         this.fireGameStatusChange();
@@ -41,10 +58,9 @@ class GameStoreClass extends EventEmitter {
         return this.gameStatus;
     }
     
-    humanMove(callback) {
-        console.log("in humanMove");
-        console.log(callback);
-    }
+    getCells() {
+        return this.cells;
+    };
     
     fireGameStatusChange() {
         this.emit(GameStoreEvents.GAME_STATUS_CHANGE);
@@ -56,6 +72,27 @@ class GameStoreClass extends EventEmitter {
     
     removeOnGameStatusChange(handler) {
         this.removeListener(GameStoreEvents.GAME_STATUS_CHANGE, handler);
+    }
+    
+    humanMove(callback) {
+        this.humanMoveCallback = callback;
+    }
+    
+    insertAt(index, symbol) {
+        this.cells[index] = symbol;
+        this.fireBoardChange();
+    }
+    
+    fireBoardChange() {
+        this.emit(GameStoreEvents.BOARD_CHANGE);
+    }
+    
+    onBoardChange(handler) {
+        this.on(GameStoreEvents.BOARD_CHANGE, handler);
+    }
+    
+    removeOnBoardChange(handler) {
+        this.removeListener(GameStoreEvents.BOARD_CHANGE, handler);
     }
 }
 

@@ -22,10 +22,10 @@ const GameStatus = React.createClass({
                             <p>Wait for it ...</p>
                         </div>
                         );
-                 // TODO: check status magic strings
-                case "x-won":
+                case "won":
                     gameStatusComponent = (<div>You won !</div>);
                     break;
+                // TODO: check status magic strings
                 case "o-won":
                     gameStatusComponent = (<div>You lost !</div>); 
                     break;
@@ -33,10 +33,10 @@ const GameStatus = React.createClass({
                     gameStatusComponent = (<div>It's a Draw</div>);
                     break;
                 default:
-                    throw { 
+                    throw JSON.stringify({ 
                         message: "Invalid game status!",
                         gameStatus: gameStatus  
-                    };
+                    });
             }
         } 
         
