@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import Difficulty from "./difficulty.js";
 
 const TicTacToe = React.createClass({
