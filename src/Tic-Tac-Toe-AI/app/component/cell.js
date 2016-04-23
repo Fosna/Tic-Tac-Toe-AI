@@ -8,10 +8,22 @@ const Cell = React.createClass({
     },
     
     render: function () {
+        let currentClassName = Cell.EmptyClassName;
+        
+        if (this.props.symbol && this.props.symbol.toUpperCase() === "X") {
+            currentClassName = Cell.XClassName;
+        } else if (this.props.symbol && this.props.symbol.toUpperCase() === "O") {
+            currentClassName = Cell.OClassName;
+        }
+        
         return (
-            <div className='cell' onClick={ this.onCellClick }>{ this.props.symbol }</div>
+            <div className={ currentClassName } onClick={ this.onCellClick }>{ this.props.symbol }</div>
         );
     }
 });
+
+Cell.EmptyClassName = "cell";
+Cell.XClassName = "cell green";
+Cell.OClassName = "cell red";
 
 export default Cell;
