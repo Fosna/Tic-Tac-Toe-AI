@@ -1,0 +1,5 @@
+const DIFFICULTY_SET = "DIFFICULTY_SET";
+
+export {
+    DIFFICULTY_SET,
+};

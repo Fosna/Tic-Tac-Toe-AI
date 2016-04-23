@@ -1,5 +1,7 @@
 import React from "react";
+import Actions from "../action/actions.js";
 
+// TODO: I don't like that actions isn't passed as dependency to react class.
 const Difficulty = React.createClass({
     getInitialState: function () {
         console.log("getInitialState called");
@@ -12,6 +14,12 @@ const Difficulty = React.createClass({
         const difficulty = ev.target.id;
         const newState = this.createNewState(difficulty);
         this.setState(newState);
+    },
+    
+    onStartClick: function() {
+        if (this.state.difficulty) {
+            Actions.difficultySet(this.state.difficulty);
+        }
     },
     
     createNewState: function (difficulty) {
@@ -50,7 +58,7 @@ const Difficulty = React.createClass({
                     </span>
                 </div>
                 
-                <div className='start'>Start</div>
+                <div className='start' onClick={ this.onStartClick }>Start</div>
             </div>
         );
     }
