@@ -43,7 +43,6 @@ const Difficulty = React.createClass({
     render : function () {
         return (
             <div>
-                <h1>{ this.state.difficulty }</h1>
                 <div className='difficulty'>
                     <span id='blind' className={ this.state.blindClassName } onClick={ this.onDifficultyClick }>
                         Blind 

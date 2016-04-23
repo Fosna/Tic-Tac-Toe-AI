@@ -1,5 +1,5 @@
 import React from "react";
-import Difficulty from "./difficulty.js";
+import GameStatus from "./gameStatus.js";
 import GameStore from "../store/gameStore.js";
 
 const TicTacToe = React.createClass({
@@ -25,10 +25,7 @@ const TicTacToe = React.createClass({
     
     render: function () {
         return (
-            <div className='control' ng-controller='GameStatusController as statusCtrl'>
-                <Difficulty />
-                <h1>{ this.state.gameStatus }</h1>
-            </div>
+            <GameStatus gameStatus={ this.state.gameStatus } />
         );
     }
 });
