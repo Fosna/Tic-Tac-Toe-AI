@@ -4,9 +4,6 @@ import Ai from "./ai";
 
 class AiAction {
 
-    public movePosition: number;
-    public minimaxVal: number;
-
     /*
      * Constructs an action that the ai player could make
      * @param pos [Number]: the cell position the ai would make its action in
@@ -26,7 +23,7 @@ class AiAction {
          */
     }
     
-    applyTo(state: State) {
+    applyTo(state) {
         var next = new State(state);
 
         //put the letter on the board
@@ -39,14 +36,15 @@ class AiAction {
 
         return next;
     }
-    
-    /*
+};
+
+/*
     * public static function that defines a rule for sorting AiActions in ascending manner
     * @param firstAction [AiAction] : the first action in a pairwise sort
     * @param secondAction [AiAction]: the second action in a pairwise sort
     * @return [Number]: -1, 1, or 0
     */
-    public static ASCENDING(firstAction: AiAction, secondAction: AiAction) {
+    AiAction.ASCENDING = function(firstAction, secondAction) {
         if(firstAction.minimaxVal < secondAction.minimaxVal)
             return -1; //indicates that firstAction goes before secondAction
         else if(firstAction.minimaxVal > secondAction.minimaxVal)
@@ -61,7 +59,7 @@ class AiAction {
     * @param secondAction [AiAction]: the second action in a pairwise sort
     * @return [Number]: -1, 1, or 0
     */
-    public static DESCENDING(firstAction: AiAction, secondAction: AiAction) {
+    AiAction.DESCENDING = function(firstAction, secondAction) {
         if(firstAction.minimaxVal > secondAction.minimaxVal)
             return -1; //indicates that firstAction goes before secondAction
         else if(firstAction.minimaxVal < secondAction.minimaxVal)
@@ -69,6 +67,5 @@ class AiAction {
         else
             return 0; //indicates a tie
     }
-};
 
 export default AiAction;

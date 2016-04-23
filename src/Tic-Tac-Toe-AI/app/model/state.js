@@ -1,14 +1,9 @@
 class State {
-    public board: Array<string>;
-    public turn: string;
-    public result: string;
-    public oMovesCount: number;
-    
     /*
      * Represents a state in the game
      * @param old [State]: old state to intialize the new state
      */
-    constructor(old: State = null) {
+    constructor(old) {
         /*
          * public : the player who has the turn to player
          */
@@ -34,7 +29,7 @@ class State {
         }
     }
     
-    private copyOldBoard(old: State) {
+    copyOldBoard(old) {
         // if the state is constructed using a copy of another state
             var len = old.board.length;
             this.board = new Array(len);

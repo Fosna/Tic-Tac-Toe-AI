@@ -5,8 +5,6 @@ import State from "./state";
 
 class AI {
 
-    private levelOfIntelligence: string;
-
     /*
      * Constructs an AI player with a specific level of intelligence
      * @param level [String]: the desired level of intelligence
@@ -21,7 +19,7 @@ class AI {
      * @param state [State] : the state to calculate its minimax value
      * @returns [Number]: the minimax value of the state
      */
-    minimaxValue(state: State) {
+    minimaxValue(state) {
         if(state.isTerminal()) {
             //a terminal game state is the base case
             return Game.score(state);
@@ -71,7 +69,7 @@ class AI {
      * private function: make the ai player take a blind move
      * that is: choose the cell to place its symbol randomly
      */
-    takeABlindMove(currentState: State) {
+    takeABlindMove(currentState) {
         var available = currentState.emptyCells();
         var randomCell = available[Math.floor(Math.random() * available.length)];
         var action = new AiAction(randomCell);
@@ -84,7 +82,7 @@ class AI {
      * that is: mix between choosing the optimal and suboptimal minimax decisions
      * @param turn [String]: the player to play, either X or O
      */
-    takeANoviceMove(currentState: State) {
+    takeANoviceMove(currentState) {
         var available = currentState.emptyCells();
 
         //enumerate and calculate the score for each available actions to the ai player
@@ -131,7 +129,7 @@ class AI {
      * that is: choose the optimal minimax decision
      * @param turn [String]: the player to play, either X or O
      */
-    takeAMasterMove(currentState: State) {
+    takeAMasterMove(currentState) {
         var available = currentState.emptyCells();
 
         //enumerate and calculate the score for each avaialable actions to the ai player
@@ -162,7 +160,7 @@ class AI {
      * public function: notify the ai player that it's its turn
      * @param turn [String]: the player to play, either X or O
      */
-    notify(currentState: State, callback: (number) => any) {
+    notify(currentState, callback) {
         let indx = null;
         switch(this.levelOfIntelligence) {
             //invoke the desired behavior based on the level chosen

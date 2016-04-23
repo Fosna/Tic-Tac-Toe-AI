@@ -1,21 +1,12 @@
 import State from "./state";
 import Ai from "./ai";
-import { IBoardUi } from "../vm/boardVm";
-import { IGameStatusUi } from "../vm/gameStatusVm";
-
 
 class Game {
-    private ai: Ai;
-    public currentState: State;
-    private status: string;
-    private gameStatusVm: IGameStatusUi
-    private boardVm: IBoardUi;
-    
     /*
      * Constructs a game object to be played
      * @param autoPlayer [AIPlayer] : the AI player to be play the game with
      */
-    constructor(autoPlayer, gameStatusVm: IGameStatusUi, boardVm: IBoardUi) {
+    constructor(autoPlayer, gameStatusVm, boardVm) {
 
         //public : initialize the ai player for this game
         this.ai = autoPlayer;
@@ -43,7 +34,7 @@ class Game {
      * public function that advances the game to a new state
      * @param state [State]: the new state to advance the game to
      */
-    advanceTo(state: State) {
+    advanceTo(state) {
         this.currentState = state;
         if(state.isTerminal()) {
             this.status = "ended";
@@ -75,7 +66,7 @@ class Game {
         }
     }
 
-    makeAMove(indx: number) {
+    makeAMove(indx) {
         var next = new State(this.currentState);
         next.board[indx] = next.turn;
         this.boardVm.insertAt(indx, next.turn);
@@ -99,7 +90,7 @@ class Game {
     * @param state [State]: the state in which the score is calculated
     * @return [Number]: the score calculated for the human player
     */
-    static score(state: State) {
+    static score(state) {
         if(state.result === "X-won"){
             // the x player won
             return 10 - state.oMovesCount;

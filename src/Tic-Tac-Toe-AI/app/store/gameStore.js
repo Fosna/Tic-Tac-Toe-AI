@@ -1,25 +1,31 @@
 import Dispatcher from "../dispatcher.js";
 import * as ActionTypes from "../action/actionTypes.js";
+import AI from "../model/AI.js";
+import Game from "../model/Game.js";
 
 // TODO: Rename
 class GameStoreClass {
     constructor() {
-        console.log("in GameStore.constructor");
+        // bind this
         Dispatcher.register(action => this.dispatcherListener(action));
     }
     
     dispatcherListener(action) {
-        console.log(action);
         
         switch (action.actionType) {
             case ActionTypes.DIFFICULTY_SET:
-                this.onDifficultySet(action.difficulty);
+                this.startGame(action.difficulty);
                 break;
         }
     }
     
-    onDifficultySet(difficulty) {
-        console.log(difficulty);
+    startGame(difficulty) {
+        if (difficulty) {
+            const aiPlayer = new AI(difficulty);
+            const game = new Game(aiPlayer, this.gameStatusVm, this.boardVm);
+            
+            game.start();
+        }
     }
 }
 
