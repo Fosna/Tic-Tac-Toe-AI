@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "Tic-Tac-Toe game with AI. Uses ES2015.",
   "scripts": {
-    "start": "webpack-dev-server",
-    "webpack": "webpack",
-    "webpack:w": "webpack -w"
+    "start": "webpack-dev-server -d",
+    "webpack": "webpack -d",
+    "webpack:w": "webpack -w -d"
   },
   "repository": {
     "type": "git",
