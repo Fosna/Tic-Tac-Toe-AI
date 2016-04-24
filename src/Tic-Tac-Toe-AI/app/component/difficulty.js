@@ -1,8 +1,8 @@
 import React from "react";
+// Actions is wrapper around dispatcher. Dispatcher is main mechanism in flux architecture. We can tollerate passing it as static class.
 import Actions from "../action/actions.js";
 
 
-// TODO: I don't like that actions isn't passed as dependency to react class.
 class Difficulty extends React.Component {
     constructor(props) {
         super(props);

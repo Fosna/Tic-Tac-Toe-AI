@@ -1,41 +1,43 @@
 import React from "react";
 import GameStatus from "./gameStatus.js";
-import GameStore from "../store/gameStore.js";
 import Board from "./board.js";
 
-// TODO: Don't like that GameStore is not passed as dependency via constructor.
 class TicTacToe extends React.Component{
     constructor(props) {
         super(props);
         
+        this.gameStore = props.gameStore;
+        
         this.state = {
-            gameStatus: GameStore.getGameStatus(),
-            cells: GameStore.getCells()
+            gameStatus: this.gameStore.getGameStatus(),
+            cells: this.gameStore.getCells()
         }
         
         this.onGameStatusChange = this.onGameStatusChange.bind(this);
         this.onBoardChange = this.onBoardChange.bind(this);
+        this.componentDidMount = this.componentDidMount.bind(this);
+        this.componentWillUnmount = this.componentWillUnmount.bind(this);
     }
     
     componentDidMount() {
-        GameStore.onGameStatusChange(this.onGameStatusChange);
-        GameStore.onBoardChange(this.onBoardChange);
+        this.gameStore.onGameStatusChange(this.onGameStatusChange);
+        this.gameStore.onBoardChange(this.onBoardChange);
     }
     
     componentWillUnmount() {
-        GameStore.removeOnGameStatusChange(this.onGameStatusChange);
-        GameStore.removeOnBoardChange(this.onBoardChange);
+        this.gameStore.removeOnGameStatusChange(this.onGameStatusChange);
+        this.gameStore.removeOnBoardChange(this.onBoardChange);
     }
     
     onGameStatusChange() {
         this.setState({
-            gameStatus: GameStore.getGameStatus()
+            gameStatus: this.gameStore.getGameStatus()
         });
     }
     
     onBoardChange() {
         this.setState({
-            cells: GameStore.getCells()
+            cells: this.gameStore.getCells()
         });  
     }
     

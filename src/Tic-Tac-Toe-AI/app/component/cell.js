@@ -1,4 +1,5 @@
 import React from "React";
+// Actions is wrapper around dispatcher. Dispatcher is main mechanism in flux architecture. We can tollerate passing it as static class.
 import Actions from "../action/actions.js";
 
 class Cell extends React.Component {

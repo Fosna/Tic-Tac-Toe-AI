@@ -4,5 +4,5 @@ import TicTacToe from "./component/ticTacToe.js";
 import GameStore from "./store/gameStore.js";
 
 var mountNode = document.getElementById("reactMountNode");
-ReactDom.render(<TicTacToe />, mountNode);
+ReactDom.render(<TicTacToe gameStore={ GameStore }/>, mountNode);
 
