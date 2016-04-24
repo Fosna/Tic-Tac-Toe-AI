@@ -1,9 +1,13 @@
-import Dispatcher from "../dispatcher.js";
+import Flux from "flux";
 import * as ActionTypes from "./actionTypes.js";
 
 class ActionsSingleton {
-    constructor(dispatcher) {
-        this.dispatcher = dispatcher;
+    constructor() {
+        this.dispatcher = new Flux.Dispatcher();
+    }
+    
+    listen(handler) {
+        this.dispatcher.register(handler);
     }
     
     difficultySet(difficulty) {
@@ -24,6 +28,6 @@ class ActionsSingleton {
 }
 
 
-const Actions = new ActionsSingleton(Dispatcher);
+const Actions = new ActionsSingleton();
 
 export default Actions;

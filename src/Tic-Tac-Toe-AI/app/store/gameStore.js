@@ -1,4 +1,4 @@
-import Dispatcher from "../dispatcher.js";
+import Actions from "../action/actions.js";
 import * as ActionTypes from "../action/actionTypes.js";
 import AI from "../model/AI.js";
 import Game from "../model/Game.js";
@@ -14,7 +14,7 @@ class GameStoreEmitter extends EventEmitter {
         this.cells = this.initCells();
         
         // bind this
-        Dispatcher.register(action => this.dispatcherListener(action));
+        Actions.listen(action => this.actionListener(action));
     }
     
     initCells() {
@@ -25,7 +25,7 @@ class GameStoreEmitter extends EventEmitter {
         return cells;
     }
     
-    dispatcherListener(action) {
+    actionListener(action) {
         
         switch (action.actionType) {
             case ActionTypes.DIFFICULTY_SET:
