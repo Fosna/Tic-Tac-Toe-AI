@@ -4,20 +4,25 @@ import AI from "../model/AI.js";
 import Game from "../model/Game.js";
 import EventEmitter from "events";
 import GameStoreEvents from "./gameStoreEvents.js";
+import HumanGameStatus from "../model/humanGameStatus.js";
 
 class GameStoreEmitter extends EventEmitter {
     constructor() {
         super();
         
         this.humanMoveCallback = null;
+        this.cells = this.initCells();
+        
+        // bind this
+        Dispatcher.register(action => this.dispatcherListener(action));
+    }
+    
+    initCells() {
         const cells = [];
         for(let i = 0; i < 9; i++) {
             cells.push(null);
         }
-        this.cells = cells;
-        
-        // bind this
-        Dispatcher.register(action => this.dispatcherListener(action));
+        return cells;
     }
     
     dispatcherListener(action) {
@@ -43,7 +48,7 @@ class GameStoreEmitter extends EventEmitter {
     
     humanMadeAMove(cellIndex) {
         // Should be human move and unoccupied cell.
-        if (this.gameStatus === "human" && !this.cells[cellIndex]) {
+        if (this.gameStatus === HumanGameStatus.HUMAN && !this.cells[cellIndex]) {
             this.humanMoveCallback(cellIndex);
         }
         

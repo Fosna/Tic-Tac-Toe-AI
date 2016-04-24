@@ -12,9 +12,9 @@ class GameStatus extends React.Component {
         
         let gameStatusComponent = <Difficulty />
         if (gameStatus) {
-            if (gameStatus === HumanGameStatus.human) {
+            if (gameStatus === HumanGameStatus.HUMAN) {
                 gameStatusComponent = (<div>It's your turn ...</div>);
-            } else if (gameStatus === HumanGameStatus.robot) {
+            } else if (gameStatus === HumanGameStatus.ROBOT) {
                 gameStatusComponent = (
                     <div>
                         <img src = 'imgs/robot.png' id = 'robot' class = 'robot' />
@@ -22,13 +22,13 @@ class GameStatus extends React.Component {
                     </div>
                 );
             }
-            else if (gameStatus === HumanGameStatus.won) {
+            else if (gameStatus === HumanGameStatus.WON) {
                 gameStatusComponent = (<div>You won !</div>);
             } 
-            else if (gameStatus === HumanGameStatus.lost) {
+            else if (gameStatus === HumanGameStatus.LOST) {
                 gameStatusComponent = (<div>You lost !</div>);
             }
-            else if (gameStatus === HumanGameStatus.draw) {
+            else if (gameStatus === HumanGameStatus.DRAW) {
                 gameStatusComponent = (<div>It's a Draw</div>);
             }
             else {

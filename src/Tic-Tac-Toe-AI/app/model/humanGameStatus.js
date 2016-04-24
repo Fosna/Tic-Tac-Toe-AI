@@ -2,10 +2,10 @@ class HumanGameStatus {
     
 }
 
-HumanGameStatus.human = "HUMAN";
-HumanGameStatus.robot = "ROBOT";
-HumanGameStatus.won = "WON";
-HumanGameStatus.lost = "LOST";
-HumanGameStatus.draw = "DRAW";
+HumanGameStatus.HUMAN = "HUMAN";
+HumanGameStatus.ROBOT = "ROBOT";
+HumanGameStatus.WON = "WON";
+HumanGameStatus.LOST = "LOST";
+HumanGameStatus.DRAW = "DRAW";
 
 export default HumanGameStatus

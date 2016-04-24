@@ -42,24 +42,24 @@ class Game {
 
             if(state.result === "X-won")
                 //X won
-                this.gameStatusVm.switchViewTo(HumanGameStatus.won);
+                this.gameStatusVm.switchViewTo(HumanGameStatus.WON);
             else if(state.result === "O-won")
                 //X lost
-                this.gameStatusVm.switchViewTo(HumanGameStatus.lost);
+                this.gameStatusVm.switchViewTo(HumanGameStatus.LOST);
             else
                 //it's a draw
-                this.gameStatusVm.switchViewTo(HumanGameStatus.draw);
+                this.gameStatusVm.switchViewTo(HumanGameStatus.DRAW);
         }
         else {
             //the game is still running
 
             if(this.currentState.turn === "X") {
-                this.gameStatusVm.switchViewTo(HumanGameStatus.human);
+                this.gameStatusVm.switchViewTo(HumanGameStatus.HUMAN);
 
                 this.boardVm.humanMove(indx => this.makeAMove(indx));
             }
             else {
-                this.gameStatusVm.switchViewTo(HumanGameStatus.robot);
+                this.gameStatusVm.switchViewTo(HumanGameStatus.ROBOT);
 
                 //notify the AI player its turn has come up
                 this.ai.notify(this.currentState, indx => this.makeAMove(indx));
