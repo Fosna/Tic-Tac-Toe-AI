@@ -1,26 +1,31 @@
 import React from "react";
 import Actions from "../action/actions.js";
 
+
 // TODO: I don't like that actions isn't passed as dependency to react class.
-const Difficulty = React.createClass({
-    getInitialState: function () {
-        const newState = this.createNewState(null);
-        return newState;
-    },
+class Difficulty extends React.Component {
+    constructor(props) {
+        super(props);
+        
+        this.state = this.createNewState(null);
+        
+        this.onDifficultyClick = this.onDifficultyClick.bind(this);
+        this.onStartClick = this.onStartClick.bind(this);
+    }
     
-    onDifficultyClick: function (ev) {
+    onDifficultyClick(ev) {
         const difficulty = ev.target.id;
         const newState = this.createNewState(difficulty);
         this.setState(newState);
-    },
+    }
     
-    onStartClick: function() {
+    onStartClick() {
         if (this.state.difficulty) {
             Actions.difficultySet(this.state.difficulty);
         }
-    },
+    }
     
-    createNewState: function (difficulty) {
+    createNewState(difficulty) {
         let blindClassName = Difficulty.nonSelectedClassName;
         let noviceClassName = Difficulty.nonSelectedClassName;
         let masterClassName = Difficulty.nonSelectedClassName;
@@ -38,9 +43,9 @@ const Difficulty = React.createClass({
             noviceClassName,
             masterClassName
         }
-    },
+    }
 
-    render : function () {
+    render() {
         return (
             <div>
                 <div className='difficulty'>
@@ -59,7 +64,7 @@ const Difficulty = React.createClass({
             </div>
         );
     }
-});
+}
 
 Difficulty.selectedClassName = "level";
 Difficulty.nonSelectedClassName = "level not-selected"

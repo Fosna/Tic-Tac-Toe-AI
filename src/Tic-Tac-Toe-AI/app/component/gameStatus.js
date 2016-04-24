@@ -1,8 +1,12 @@
 import React from "react";
 import Difficulty from "./difficulty.js";
 
-const GameStatus = React.createClass({
-    render: function () {
+class GameStatus extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+    
+    render() {
         const gameStatus = this.props.gameStatus;
         
         let gameStatusComponent = <Difficulty />
@@ -42,6 +46,6 @@ const GameStatus = React.createClass({
             </div>
         );
     }
-});
+}
 
 export default GameStatus;
