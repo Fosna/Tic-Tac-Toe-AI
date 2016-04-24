@@ -5,8 +5,7 @@ import Game from "../model/Game.js";
 import EventEmitter from "events";
 import GameStoreEvents from "./gameStoreEvents.js";
 
-// TODO: Rename
-class GameStoreClass extends EventEmitter {
+class GameStoreEmitter extends EventEmitter {
     constructor() {
         super();
         
@@ -97,7 +96,8 @@ class GameStoreClass extends EventEmitter {
     }
 }
 
-const GameStore = new GameStoreClass();
+// Export singleton.
+const GameStore = new GameStoreEmitter();
 
 export default GameStore;
 

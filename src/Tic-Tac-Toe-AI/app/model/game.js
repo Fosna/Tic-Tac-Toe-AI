@@ -1,5 +1,6 @@
 import State from "./state";
 import Ai from "./ai";
+import HumanGameStatus from "./humanGameStatus.js";
 
 class Game {
     /*
@@ -41,24 +42,24 @@ class Game {
 
             if(state.result === "X-won")
                 //X won
-                this.gameStatusVm.switchViewTo("won");
+                this.gameStatusVm.switchViewTo(HumanGameStatus.won);
             else if(state.result === "O-won")
                 //X lost
-                this.gameStatusVm.switchViewTo("lost");
+                this.gameStatusVm.switchViewTo(HumanGameStatus.lost);
             else
                 //it's a draw
-                this.gameStatusVm.switchViewTo("draw");
+                this.gameStatusVm.switchViewTo(HumanGameStatus.draw);
         }
         else {
             //the game is still running
 
             if(this.currentState.turn === "X") {
-                this.gameStatusVm.switchViewTo("human");
+                this.gameStatusVm.switchViewTo(HumanGameStatus.human);
 
                 this.boardVm.humanMove(indx => this.makeAMove(indx));
             }
             else {
-                this.gameStatusVm.switchViewTo("robot");
+                this.gameStatusVm.switchViewTo(HumanGameStatus.robot);
 
                 //notify the AI player its turn has come up
                 this.ai.notify(this.currentState, indx => this.makeAMove(indx));
