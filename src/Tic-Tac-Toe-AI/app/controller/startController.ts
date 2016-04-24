@@ -4,19 +4,18 @@ interface IStartController {
     setDifficulty(difficulty: string): void;
     startGame(): void;
     
-    gameService: IGameService;
     blindClass: string;
     noviceClass: string;
     masterClass: string;
 }
 
 class StartController implements IStartController {
-    gameService: IGameService;
     blindClass: string;
     noviceClass: string;
     masterClass: string;
     
     private difficulty: string;
+    private gameService: IGameService;
     
     private static selectedClass = "level";
     private static notSelectedClass = "level not-selected";
