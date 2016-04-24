@@ -1,10 +1,11 @@
+import EventEmitter from "events";
+import GameStoreEvents from "./gameStoreEvents.js";
 import Actions from "../action/actions.js";
 import * as ActionTypes from "../action/actionTypes.js";
 import AI from "../model/AI.js";
 import Game from "../model/Game.js";
-import EventEmitter from "events";
-import GameStoreEvents from "./gameStoreEvents.js";
 import HumanGameStatus from "../model/humanGameStatus.js";
+
 
 class GameStoreEmitter extends EventEmitter {
     constructor() {
