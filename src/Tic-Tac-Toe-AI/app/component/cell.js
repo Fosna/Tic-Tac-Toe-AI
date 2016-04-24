@@ -1,13 +1,23 @@
 import React from "React";
 import Actions from "../action/actions.js";
 
-const Cell = React.createClass({
-    onCellClick: function () {
-        const index = this.props.index;
-        Actions.cellClicked(index);
-    },
+class Cell extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            index: props.index
+        }
+        
+        // Bind.
+        this.onCellClick = this.onCellClick.bind(this);
+    }
     
-    render: function () {
+    onCellClick() {
+        const index = this.state.index;
+        Actions.cellClicked(index);
+    }
+    
+    render() {
         let currentClassName = Cell.EmptyClassName;
         
         if (this.props.symbol && this.props.symbol.toUpperCase() === "X") {
@@ -20,7 +30,7 @@ const Cell = React.createClass({
             <div className={ currentClassName } onClick={ this.onCellClick }>{ this.props.symbol }</div>
         );
     }
-});
+}
 
 Cell.EmptyClassName = "cell";
 Cell.XClassName = "cell green";

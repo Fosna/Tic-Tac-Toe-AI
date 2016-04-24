@@ -43,8 +43,6 @@ class GameStoreClass extends EventEmitter {
     }
     
     humanMadeAMove(cellIndex) {
-        console.log(this.cells[cellIndex]);
-        
         // Should be human move and unoccupied cell.
         if (this.gameStatus === "human" && !this.cells[cellIndex]) {
             this.humanMoveCallback(cellIndex);
