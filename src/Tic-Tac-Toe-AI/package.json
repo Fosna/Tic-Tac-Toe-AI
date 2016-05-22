@@ -3,13 +3,13 @@
   "version": "1.0.0",
   "description": "Tic-Tac-Toe game with AI. Uses ES2015.",
   "scripts": {
-    "start": "concurrently \"npm run tsc:w\" \"npm run webpack:w\" ",
+    "start": "npm run webpack:w",
     "tsc": "tsc",
     "tsc:w": "tsc -w",
     "typings": "typings",
     "postinstall": "typings install",
     "webpack": "webpack",
-    "webpack:w": "webpack -w"
+    "webpack:w": "webpack -w -d"
   },
   "repository": {
     "type": "git",
@@ -27,11 +27,11 @@
   },
   "homepage": "https://github.com/Fosna/Tic-Tac-Toe-AI#readme",
   "dependencies": {
-    "angular": "^1.5.3",
-    "es6-shim": "^0.35.0"
+    "angular": "^1.5.3"
   },
   "devDependencies": {
-    "concurrently": "^2.0.0",
+    "babel-loader": "^6.2.4",
+    "ts-loader": "^0.8.2",
     "typescript": "^1.8.9",
     "typings": "^0.7.11",
     "webpack": "^1.12.9"

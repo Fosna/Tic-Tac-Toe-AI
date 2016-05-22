@@ -6,6 +6,8 @@ import StartController from "./controller/StartController";
 import GameStatusController from "./controller/GameStatusController";
 import BoardController from "./controller/BoardController";
 
+console.log("monkey");
+
 
 angular.module("App", []).
     service("GameService", [GameService]).
